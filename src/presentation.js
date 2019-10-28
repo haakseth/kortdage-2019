@@ -6,6 +6,7 @@ import {
   // BlockQuote,
   // Cite,
   Deck,
+  // Fill,
   Heading,
   ListItem,
   List,
@@ -20,14 +21,18 @@ import {
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
 import bg from './img/thomas-kelley-5YtjgRNTli4-unsplash.jpg';
-import AnimatedRoute from './AnimatedRoute';
+import AnimatedRoute from './AnimatedRoute/AnimatedRoute';
+import Onboarding from './Onboarding/Onboarding';
+import Phone from './components/Phone';
+import SeptimaLogo from './components/SeptimaLogo';
+import { bgColor } from './style';
 
 // Require CSS
 require('normalize.css');
 
 const theme = createTheme(
   {
-    primary: 'hsl(210, 36%, 96%)',
+    primary: bgColor,
     secondary: '#1F2022',
     tertiary: '#03A9FC',
     quaternary: '#CECECE'
@@ -47,10 +52,18 @@ export default class Presentation extends React.Component {
         transitionDuration={500}
         theme={theme}
       >
-        <Slide bgImage={bg}>
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+        <Slide bgImage={bg} align={'center flex-start'}>
+          <Heading
+            style={{ marginTop: 100 }}
+            size={1}
+            fit
+            caps
+            lineHeight={1}
+            textColor="secondary"
+          >
             Animationer og interaktioner
           </Heading>
+          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
         </Slide>
         <Slide>
           <List>
@@ -62,6 +75,7 @@ export default class Presentation extends React.Component {
               <ListItem>Kortapplikationer</ListItem>
             </Appear>
           </List>
+          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
         </Slide>
         <Slide>
           Hvorfor bruge animationer og interaktioner i kortapper
@@ -71,9 +85,23 @@ export default class Presentation extends React.Component {
             <ListItem>Item 3</ListItem>
             <ListItem>Item 4</ListItem>
           </List>
+          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
         </Slide>
-        <Slide>
-          <AnimatedRoute />
+        <Slide align={'center flex-start'}>
+          <Heading size={5} textColor={'#45241C'} style={{ margin: 50 }}>
+            Flow example: Onboarding
+          </Heading>
+          <Onboarding />
+          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
+        </Slide>
+        <Slide align={'center flex-start'}>
+          <Heading size={5} textColor={'#45241C'} style={{ margin: 50 }}>
+            Kortanimation: Visualiser rude
+          </Heading>
+          <Phone>
+            <AnimatedRoute />
+          </Phone>
+          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
         </Slide>
       </Deck>
     );

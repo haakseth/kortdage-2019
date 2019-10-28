@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import styled from 'styled-components';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { toTapHouse, toOslo } from './api';
+import { toTapHouse } from './api';
+import { bgColor } from '../style';
 export default function AnimatedRoute() {
   const [route, setRoute] = useState(undefined);
   const getRoute = () => {
@@ -30,7 +31,7 @@ export default function AnimatedRoute() {
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4',
-        center: [12.565948, 55.670915],
+        center: [12.567, 55.672],
         zoom: 14
       });
 
@@ -126,11 +127,11 @@ const GetRoute = styled.button`
   cursor: pointer;
   position: absolute;
   z-index: 2;
-  top: 10px;
-  left: 10px;
+  bottom: 40px;
+  left: 20px;
   height: 30px;
   width: 60px;
-  background-color: #eeffff;
+  background-color: ${bgColor};
   outline: none;
   border: solid 1px #ccc;
   box-shadow: 0 4px 12px 0 rgba(16, 42, 67, 0.2);

@@ -9,7 +9,7 @@ import Presentation from './presentation';
 const CustomErrorReporter = ({ error }) => <Redbox error={error} />;
 
 CustomErrorReporter.propTypes = {
-  error: PropTypes.instanceOf(Error).isRequired,
+  error: PropTypes.instanceOf(Error).isRequired
 };
 
 ReactDOM.render(
