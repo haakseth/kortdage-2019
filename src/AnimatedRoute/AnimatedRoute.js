@@ -1,18 +1,46 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import styled from 'styled-components';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { toTapHouse } from './api';
-import { bgColor } from '../style';
+import styled from 'styled-components';
+import along from '@turf/along';
+import length from '@turf/length';
+import {
+  // toTapHouse
+  toOslo as routeFromApi
+} from './api';
 import Vignette from '../components/Vignette';
-export default function AnimatedRoute(props) {
-  const [route, setRoute] = useState(undefined);
-  const getRoute = () => {
-    if (route) setRoute(undefined);
-    else setRoute(toTapHouse);
-  };
+export default function Map() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
+
+  const [route, setRoute] = useState(undefined);
+
+  const getRoute = () => {
+    if (route) setRoute(undefined);
+    else {
+      const alongDist = length(routeFromApi) / 120;
+      const routeEven = {
+        ...routeFromApi,
+        features: [
+          {
+            ...routeFromApi.features[0],
+            geometry: { ...routeFromApi.features[0].geometry, coordinates: [] }
+          }
+        ],
+        originalRoute: routeFromApi
+      };
+      for (var i = 0; i < 120; i++) {
+        const newCoord = along(
+          routeFromApi.features[0].geometry,
+          alongDist * i
+        );
+        routeEven.features[0].geometry.coordinates.push(
+          newCoord.geometry.coordinates
+        );
+      }
+      setRoute(routeEven);
+    }
+  };
   const [geoJson, setGeoJson] = useState({
     type: 'FeatureCollection',
     features: [
@@ -32,12 +60,16 @@ export default function AnimatedRoute(props) {
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4',
-        center: [12.567, 55.672],
-        zoom: 14
+        // center: [12.565948, 55.670915],
+        center: [11.91, 57.8],
+        zoom: 5
       });
 
       mapboxMap.on('load', () => {
         setMap(mapboxMap);
+        mapboxMap.on('click', e => {
+          console.log(e.lngLat);
+        });
         mapboxMap.addLayer({
           id: 'line-animation',
           type: 'line',
@@ -63,7 +95,10 @@ export default function AnimatedRoute(props) {
 
   useEffect(() => {
     if (route) {
-      // map.fitBounds(route.features[0].bbox, { padding: 200 });
+      // map.fitBounds(route.features[0].bbox, {
+      //   padding: 200
+      //   // speed: 10
+      // });
       animateLine();
     } else {
       setGeoJson({
@@ -91,23 +126,29 @@ export default function AnimatedRoute(props) {
   // const [animation, setAnimation] = useState(undefined);
   let progress = 0;
   const animateLine = () => {
-    const speedFactor =
-      geoJson.features[0].geometry.coordinates.length > 300 ? 300 : 1;
-    if (progress < route.features[0].geometry.coordinates.length - 1) {
+    const antalpunkter = route.features[0].geometry.coordinates.length;
+    const antalpunkterPerFrame =
+      antalpunkter > 60 ? Math.round(antalpunkter / 60) : 1;
+    if (progress < antalpunkter - antalpunkterPerFrame) {
       // append new coordinates to the lineString
-      geoJson.features[0].geometry.coordinates.push(
-        route.features[0].geometry.coordinates[progress]
-      );
-      progress += speedFactor;
+      geoJson.features[0].geometry.coordinates = [
+        ...geoJson.features[0].geometry.coordinates,
+        ...route.features[0].geometry.coordinates.slice(
+          progress,
+          progress + antalpunkterPerFrame
+        )
+      ];
+
+      progress += antalpunkterPerFrame;
       setGeoJson({ ...geoJson });
 
       // Request the next frame of the animation.
       requestAnimationFrame(animateLine);
     } else {
-      setGeoJson(route);
+      setGeoJson(route.originalRoute);
+      progress = 0;
     }
   };
-
   return (
     <div
       style={{
@@ -117,9 +158,8 @@ export default function AnimatedRoute(props) {
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: 'hidden'
+        overflow: 'none'
       }}
-      onTouchMove={e => e.stopPropagation()}
       ref={el => (mapContainer.current = el)}
     >
       <GetRoute onClick={getRoute}>Klik</GetRoute>
@@ -127,16 +167,15 @@ export default function AnimatedRoute(props) {
     </div>
   );
 }
-
 const GetRoute = styled.button`
   cursor: pointer;
   position: absolute;
   z-index: 4;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
   height: 30px;
   width: 60px;
-  background-color: ${bgColor};
+  background-color: #eeffff;
   outline: none;
   border: solid 1px #ccc;
   box-shadow: 0 4px 12px 0 rgba(16, 42, 67, 0.2);
