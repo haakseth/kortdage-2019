@@ -8,7 +8,7 @@ import {
   // toTapHouse
   toOslo as routeFromApi
 } from './api';
-import Vignette from '../components/Vignette';
+import Vignette from '../../components/Vignette';
 export default function Map() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);

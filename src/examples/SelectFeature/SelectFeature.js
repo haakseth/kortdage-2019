@@ -3,8 +3,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './mapbox-override.css';
 import produce from 'immer';
-import diffStyles from './diff.js';
-import Vignette from '../components/Vignette.js';
+import diffStyles from './diff';
+import Vignette from '../../components/Vignette.js';
 export default function SelectFeature() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);

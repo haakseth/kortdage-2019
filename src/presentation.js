@@ -14,8 +14,8 @@ import dictionary from './img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg';
 import motivation from './img/andrew-neel-1-29wyvvLJA-unsplash.jpg';
 import shaka1 from './img/shaka1.jpg';
 import shaka2 from './img/shaka2.jpg';
-import AnimatedRoute from './AnimatedRoute/AnimatedRoute';
-import SelectFeature from './SelectFeature/SelectFeature';
+import AnimatedRoute from './examples/AnimatedRoute/AnimatedRoute';
+import SelectFeature from './examples/SelectFeature/SelectFeature';
 import Onboarding from './Onboarding/Onboarding';
 import SeptimaLogo from './components/SeptimaLogo';
 import { bgColor } from './style';
@@ -226,11 +226,18 @@ export default class Presentation extends React.Component {
           </List>
           <SeptimaLogo color={bgColor} />
         </Slide>
-        <Slide align={'center flex-start'}>
-          <Heading size={5} textColor={'#45241C'} style={{ margin: 50 }}>
-            Flow example: Onboarding
-          </Heading>
-          <Onboarding />
+        <Slide
+          align={'center center'}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+              rgba(0, 0, 0, 0.7))`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <Fill column>
+            <Onboarding />
+          </Fill>
           <Vignette />
           <SeptimaLogo />
         </Slide>
