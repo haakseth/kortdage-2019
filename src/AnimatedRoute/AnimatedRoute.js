@@ -107,12 +107,7 @@ export default function AnimatedRoute(props) {
       setGeoJson(route);
     }
   };
-  const renderVignette = () => {
-    if (props.vignette) {
-      return <Vignette />;
-    }
-    return null;
-  };
+
   return (
     <div
       style={{
@@ -128,7 +123,7 @@ export default function AnimatedRoute(props) {
       ref={el => (mapContainer.current = el)}
     >
       <GetRoute onClick={getRoute}>Klik</GetRoute>
-      {renderVignette()}
+      <Vignette />
     </div>
   );
 }
@@ -136,8 +131,8 @@ export default function AnimatedRoute(props) {
 const GetRoute = styled.button`
   cursor: pointer;
   position: absolute;
-  z-index: 2;
-  bottom: 40px;
+  z-index: 4;
+  top: 20px;
   left: 20px;
   height: 30px;
   width: 60px;

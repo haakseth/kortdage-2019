@@ -19,6 +19,7 @@ import SelectFeature from './SelectFeature/SelectFeature';
 import Onboarding from './Onboarding/Onboarding';
 import SeptimaLogo from './components/SeptimaLogo';
 import { bgColor } from './style';
+import Vignette from './components/Vignette';
 
 // Require CSS
 require('normalize.css');
@@ -45,16 +46,20 @@ export default class Presentation extends React.Component {
         transitionDuration={500}
         theme={theme}
       >
-        <Slide bgImage={disney} align={'center flex-start'}>
-          <Heading
-            style={{ marginTop: 100 }}
-            fit
-            caps
-            lineHeight={1}
-            textColor="secondary"
-          >
+        <Slide
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.7)),
+                url(${disney})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+          align={'center flex-start'}
+        >
+          <MapHeader style={{ color: '#fff' }}>
             Mikroanimationer og interaktioner i kortapplikationer
-          </Heading>
+          </MapHeader>
+          <Vignette />
           <SeptimaLogo />
         </Slide>
         <Slide
@@ -62,7 +67,8 @@ export default class Presentation extends React.Component {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
                 rgba(0, 0, 0, 0.7)),
                 url(${shaka1})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         >
           <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
@@ -80,7 +86,8 @@ export default class Presentation extends React.Component {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
                 rgba(0, 0, 0, 0.5)),
                 url(${dictionary})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         >
           <Fill
@@ -133,7 +140,8 @@ export default class Presentation extends React.Component {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
                 rgba(0, 0, 0, 0.5)),
                 url(${dictionary})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         >
           <Fill
@@ -188,7 +196,8 @@ export default class Presentation extends React.Component {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
               rgba(0, 0, 0, 0.5)),
               url(${motivation})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         >
           <Heading
@@ -222,6 +231,7 @@ export default class Presentation extends React.Component {
             Flow example: Onboarding
           </Heading>
           <Onboarding />
+          <Vignette />
           <SeptimaLogo />
         </Slide>
         <Slide align={'center flex-start'}>
@@ -236,14 +246,15 @@ export default class Presentation extends React.Component {
             style={{ margin: 50 }}
           ></Heading>
           <AnimatedRoute />
-          <SeptimaLogo />
+          <SeptimaLogo color={bgColor} />
         </Slide>
         <Slide
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
                 rgba(0, 0, 0, 0.7)),
                 url(${shaka2})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         >
           <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
@@ -276,6 +287,6 @@ const Fill = styled.div`
 
 const MapHeader = styled.h1`
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   color: ${bgColor};
 `;

@@ -5,7 +5,7 @@ import './mapbox-override.css';
 import produce from 'immer';
 import diffStyles from './diff.js';
 import Vignette from '../components/Vignette.js';
-export default function SelectFeature(props) {
+export default function SelectFeature() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
   const [selectedBuilding, setSelectedBuilding] = useState(undefined);
@@ -25,7 +25,6 @@ export default function SelectFeature(props) {
       });
       mapboxMap.on('load', () => {
         setMap(mapboxMap);
-        console.log(mapboxMap.getBounds());
         // Lag for selected building
         mapboxMap.addLayer(
           {
