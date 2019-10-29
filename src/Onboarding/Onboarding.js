@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import Phone from '../components/Phone';
 import Button from './Button';
+import InputWithIcon from './InputWithIcon';
+import PiratLogo from './PiratLogo';
 
 export default function Onboarding() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [introPart, setIntroPart] = useState(1);
   const [introDone, setIntroDone] = useState(false);
   const firstPartAnimation = useSpring({
@@ -13,9 +17,13 @@ export default function Onboarding() {
 
   const AnimatedButton = animated(Button);
   const buttonOneAnimation = useSpring({
-    opacity: introPart === 1 ? 1 : 0
+    opacity: introPart === 1 ? 1 : 0,
+    maxWidth: introPart === 1 ? 200 : 0,
+    width: introPart === 1 ? '45%' : '0%',
+    borderWidth: introPart === 1 ? 1 : 0
   });
   const buttonTwoAnimation = useSpring({
+    maxWidth: introPart === 1 ? '45%' : '100%',
     width: introPart === 1 ? '45%' : '100%'
   });
   const dotStyle = {
@@ -34,13 +42,34 @@ export default function Onboarding() {
     if (introDone) {
       return (
         <Wrapper style={{ justifyContent: 'center' }}>
+          <PiratLogo style={{ alignSelf: 'center', marginBottom: 30 }} />
+          <InputWithIcon
+            autofocus
+            value={username}
+            setValue={setUsername}
+            icontype="user"
+            placeholder="Piratnavn"
+            maxLength={20}
+            onmaxLength={() => {
+              // TODO: Fortæl brugeren at der kun er landkrabber der har så lange navne?
+            }}
+          />
+          <InputWithIcon
+            value={email}
+            setValue={setEmail}
+            icontype="email"
+            type="email"
+            placeholder="Email (valgfrit)"
+            maxLength={50}
+          />
           <Button
             cta
             onClick={() => {
               setIntroDone(false);
             }}
+            style={{ marginTop: 20 }}
           >
-            Show intro
+            Submit
           </Button>
         </Wrapper>
       );
@@ -57,8 +86,8 @@ export default function Onboarding() {
             ...{
               width: 750,
               display: 'flex',
-              alignSelf: 'flex-start',
-              marginTop: 100
+              alignSelf: 'flex-start'
+              // marginTop: 30
             },
             ...firstPartAnimation
           }}
@@ -66,7 +95,6 @@ export default function Onboarding() {
           <span
             style={{
               width: 295
-              // marginLeft: -50
             }}
           >
             <p>
@@ -93,7 +121,8 @@ export default function Onboarding() {
         <div
           style={{
             marginTop: 'auto',
-            display: 'flex'
+            display: 'flex',
+            justifyContent: 'center'
           }}
         >
           <animated.div
@@ -105,15 +134,15 @@ export default function Onboarding() {
         </div>
         <div
           style={{
-            position: 'relative',
             width: '100%',
-            height: 100
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: 10
           }}
         >
           <AnimatedButton
             style={{
-              ...buttonOneAnimation,
-              ...{ position: 'absolute', width: '45%', left: 0, bottom: 0 }
+              ...buttonOneAnimation
             }}
             onClick={() => setIntroDone(true)}
             disabled={introPart !== 1}
@@ -122,8 +151,7 @@ export default function Onboarding() {
           </AnimatedButton>
           <AnimatedButton
             style={{
-              ...buttonTwoAnimation,
-              ...{ position: 'absolute', right: 0, bottom: 0 }
+              ...buttonTwoAnimation
             }}
             cta
             onClick={() => {
@@ -158,7 +186,7 @@ const Wrapper = styled.div`
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   overflow-x: hidden;
   font-size: 14px;
   color: #45241c;

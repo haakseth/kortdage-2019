@@ -35,6 +35,7 @@ const StyledButton = styled.button`
   background: none;
   font-size: 16px;
   outline: none;
+  padding: 0;
   ${props =>
     props.cta &&
     css`

@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { toTapHouse } from './api';
 import { bgColor } from '../style';
-export default function AnimatedRoute() {
+export default function AnimatedRoute(props) {
   const [route, setRoute] = useState(undefined);
   const getRoute = () => {
     if (route) setRoute(undefined);
@@ -106,6 +106,12 @@ export default function AnimatedRoute() {
       setGeoJson(route);
     }
   };
+  const renderVignette = () => {
+    if (props.vignette) {
+      return <Vignette />;
+    }
+    return null;
+  };
   return (
     <div
       style={{
@@ -115,14 +121,26 @@ export default function AnimatedRoute() {
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: 'none'
+        overflow: 'hidden'
       }}
       ref={el => (mapContainer.current = el)}
     >
       <GetRoute onClick={getRoute}>Klik</GetRoute>
+      {renderVignette()}
     </div>
   );
 }
+
+const Vignette = styled.div`
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  box-shadow: inset 0px 0px 150px 60px rgba(0, 0, 0, 0.8);
+`;
 const GetRoute = styled.button`
   cursor: pointer;
   position: absolute;
