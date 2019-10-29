@@ -16,7 +16,7 @@ import shaka1 from './img/shaka1.jpg';
 import shaka2 from './img/shaka2.jpg';
 import AnimatedRoute from './examples/AnimatedRoute/AnimatedRoute';
 import SelectFeature from './examples/SelectFeature/SelectFeature';
-import Onboarding from './Onboarding/Onboarding';
+import Onboarding from './examples/Onboarding/Onboarding';
 import SeptimaLogo from './components/SeptimaLogo';
 import { bgColor } from './style';
 import Vignette from './components/Vignette';
@@ -247,11 +247,7 @@ export default class Presentation extends React.Component {
           <SeptimaLogo color={'#fff'} />
         </Slide>
         <Slide align={'center flex-start'}>
-          <Heading
-            size={5}
-            textColor={'#45241C'}
-            style={{ margin: 50 }}
-          ></Heading>
+          <MapHeader>Custom kortanimation</MapHeader>
           <AnimatedRoute />
           <SeptimaLogo color={bgColor} />
         </Slide>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
-import { size } from '../style';
-import { useMedia } from '../hooks/useMedia';
-import Phone from '../components/Phone';
+import { size } from '../../style';
+import { useMedia } from '../../hooks/useMedia';
+import Phone from '../../components/Phone';
 import Button from './Button';
 import InputWithIcon from './InputWithIcon';
 import PiratLogo from './PiratLogo';
@@ -77,7 +77,7 @@ export default function Onboarding() {
             }}
             style={{ marginTop: 20 }}
           >
-            Submit
+            Kom i gang
           </Button>
         </Wrapper>
       );
