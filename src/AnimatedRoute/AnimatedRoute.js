@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { toTapHouse } from './api';
 import { bgColor } from '../style';
@@ -123,6 +123,7 @@ export default function AnimatedRoute(props) {
         right: 0,
         overflow: 'hidden'
       }}
+      onTouchMove={e => e.stopPropagation()}
       ref={el => (mapContainer.current = el)}
     >
       <GetRoute onClick={getRoute}>Klik</GetRoute>

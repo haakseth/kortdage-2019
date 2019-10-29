@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
+import { size } from '../style';
+import { useMedia } from '../hooks/useMedia';
 import Phone from '../components/Phone';
 import Button from './Button';
 import InputWithIcon from './InputWithIcon';
@@ -11,10 +13,19 @@ export default function Onboarding() {
   const [email, setEmail] = useState('');
   const [introPart, setIntroPart] = useState(1);
   const [introDone, setIntroDone] = useState(false);
-  const firstPartAnimation = useSpring({
+
+  const isSmallScreen = useMedia(
+    [`(max-width: ${size.small}px)`],
+    [true],
+    false
+  );
+
+  const smallscreenSwipeAnimation = useSpring({
+    marginLeft: introPart === 1 ? '0vw' : '-100vw'
+  });
+  const swipeAnimation = useSpring({
     marginLeft: introPart === 1 ? 0 : -375
   });
-
   const AnimatedButton = animated(Button);
   const buttonOneAnimation = useSpring({
     opacity: introPart === 1 ? 1 : 0,
@@ -50,9 +61,6 @@ export default function Onboarding() {
             icontype="user"
             placeholder="Piratnavn"
             maxLength={20}
-            onmaxLength={() => {
-              // TODO: Fortæl brugeren at der kun er landkrabber der har så lange navne?
-            }}
           />
           <InputWithIcon
             value={email}
@@ -75,8 +83,36 @@ export default function Onboarding() {
       );
     }
   };
+  const renderPhone = () => {
+    if (isSmallScreen) {
+      return (
+        <div
+          style={{
+            position: 'absolute',
+            backgroundColor: '#f3edcd',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0
+          }}
+        >
+          {renderIntro()}
+          {renderForm()}
+        </div>
+      );
+    }
+    return (
+      <Phone bgColor={'#f3edcd'}>
+        {renderIntro()}
+        {renderForm()}
+      </Phone>
+    );
+  };
   const renderIntro = () => {
     if (introDone) return null;
+    const animation = isSmallScreen
+      ? smallscreenSwipeAnimation
+      : swipeAnimation;
     return (
       <Wrapper>
         <h2 style={{ marginBottom: 5 }}>Septimas fantastiske</h2>
@@ -84,17 +120,18 @@ export default function Onboarding() {
         <animated.div
           style={{
             ...{
-              width: 750,
+              width: isSmallScreen ? '200vw' : 750,
               display: 'flex',
               alignSelf: 'flex-start'
               // marginTop: 30
             },
-            ...firstPartAnimation
+            ...animation
           }}
         >
           <span
             style={{
-              width: 295
+              width: isSmallScreen ? '100vw' : 295,
+              paddingRight: isSmallScreen ? 80 : 0
             }}
           >
             <p>
@@ -109,8 +146,9 @@ export default function Onboarding() {
           </span>
           <span
             style={{
-              width: 295,
-              marginLeft: 80
+              width: isSmallScreen ? '100vw' : 295,
+              marginLeft: isSmallScreen ? 0 : 80,
+              paddingRight: isSmallScreen ? 80 : 0
             }}
           >
             Når brugererne har lest færdig, kan vi give dem signup-formularen.
@@ -169,12 +207,7 @@ export default function Onboarding() {
       </Wrapper>
     );
   };
-  return (
-    <Phone bgColor={'#f3edcd'}>
-      {renderIntro()}
-      {renderForm()}
-    </Phone>
-  );
+  return <div>{renderPhone()}</div>;
 }
 
 const Wrapper = styled.div`
