@@ -12,7 +12,10 @@ import createTheme from 'spectacle/lib/themes/default';
 import disney from './img/thomas-kelley-5YtjgRNTli4-unsplash.jpg';
 import dictionary from './img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg';
 import motivation from './img/andrew-neel-1-29wyvvLJA-unsplash.jpg';
+import shaka1 from './img/shaka1.jpg';
+import shaka2 from './img/shaka2.jpg';
 import AnimatedRoute from './AnimatedRoute/AnimatedRoute';
+import SelectFeature from './SelectFeature/SelectFeature';
 import Onboarding from './Onboarding/Onboarding';
 import SeptimaLogo from './components/SeptimaLogo';
 import { bgColor } from './style';
@@ -52,7 +55,25 @@ export default class Presentation extends React.Component {
           >
             Mikroanimationer og interaktioner i kortapplikationer
           </Heading>
-          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
+          <SeptimaLogo />
+        </Slide>
+        <Slide
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.7)),
+                url(${shaka1})`,
+            backgroundSize: 'cover'
+          }}
+        >
+          <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
+            <span>John Wika Haakseth</span>
+            <span>@haakseth</span>
+            {/* eslint-disable-next-line */}
+            <span>🇳🇴🇩🇰</span>
+            {/* eslint-disable-next-line */}
+            <span>🏐💻☕️🎸🐶</span>
+            <SeptimaLogo color={bgColor} />
+          </Fill>
         </Slide>
         <Slide
           style={{
@@ -105,10 +126,7 @@ export default class Presentation extends React.Component {
               </div>
             </div>
           </Fill>
-          <SeptimaLogo
-            color={bgColor}
-            style={{ position: 'absolute', bottom: 20, left: 10 }}
-          />
+          <SeptimaLogo color={bgColor} />
         </Slide>
         <Slide
           style={{
@@ -163,10 +181,7 @@ export default class Presentation extends React.Component {
               </Appear>
             </div>
           </Fill>
-          <SeptimaLogo
-            color={bgColor}
-            style={{ position: 'absolute', bottom: 20, left: 10 }}
-          />
+          <SeptimaLogo color={bgColor} />
         </Slide>
         <Slide
           style={{
@@ -200,17 +215,19 @@ export default class Presentation extends React.Component {
               <ListItem>De' sjovt</ListItem>
             </Appear>
           </List>
-          <SeptimaLogo
-            color={bgColor}
-            style={{ position: 'absolute', bottom: 20, left: 10 }}
-          />
+          <SeptimaLogo color={bgColor} />
         </Slide>
         <Slide align={'center flex-start'}>
           <Heading size={5} textColor={'#45241C'} style={{ margin: 50 }}>
             Flow example: Onboarding
           </Heading>
           <Onboarding />
-          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
+          <SeptimaLogo />
+        </Slide>
+        <Slide align={'center flex-start'}>
+          <MapHeader>Fokus på valgt element</MapHeader>
+          <SelectFeature />
+          <SeptimaLogo color={'#fff'} />
         </Slide>
         <Slide align={'center flex-start'}>
           <Heading
@@ -219,30 +236,21 @@ export default class Presentation extends React.Component {
             style={{ margin: 50 }}
           ></Heading>
           <AnimatedRoute />
-          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
+          <SeptimaLogo />
         </Slide>
-        <Slide align={'center flex-start'}>
-          <Fill column>
-            <Heading size={5} style={{ zIndex: 2, color: bgColor }}>
-              Framhev valgt element
-            </Heading>
-            <AnimatedRoute vignette />
+        <Slide
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.7)),
+                url(${shaka2})`,
+            backgroundSize: 'cover'
+          }}
+        >
+          <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
+            <span>Tak!</span>
+            <span>Fotokredits</span>
+            <span>Links</span>
           </Fill>
-          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
-        </Slide>
-        <Slide>
-          <Heading
-            size={5}
-            textColor={'#45241C'}
-            style={{ margin: 50, zIndex: 2 }}
-          >
-            Fotos:
-          </Heading>
-          <List>
-            <ListItem>Thomas Kelley on Unsplash</ListItem>
-            <ListItem>Edho Pratama on Unsplash</ListItem>
-          </List>
-          <SeptimaLogo style={{ position: 'absolute', bottom: 20, left: 10 }} />
         </Slide>
       </Deck>
     );
@@ -264,4 +272,10 @@ const Fill = styled.div`
     css`
       flex-direction: column;
     `};
+`;
+
+const MapHeader = styled.h1`
+  position: absolute;
+  z-index: 2;
+  color: ${bgColor};
 `;

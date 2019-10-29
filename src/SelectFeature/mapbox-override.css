@@ -1,0 +1,6 @@
+.mapboxgl-ctrl-bottom-left {
+  left: unset;
+  right: 10px;
+  bottom: 20px;
+  filter: opacity(50%);
+}

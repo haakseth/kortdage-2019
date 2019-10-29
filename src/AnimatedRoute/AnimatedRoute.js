@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { toTapHouse } from './api';
 import { bgColor } from '../style';
+import Vignette from '../components/Vignette';
 export default function AnimatedRoute(props) {
   const [route, setRoute] = useState(undefined);
   const getRoute = () => {
@@ -132,16 +133,6 @@ export default function AnimatedRoute(props) {
   );
 }
 
-const Vignette = styled.div`
-  pointer-events: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 2;
-  box-shadow: inset 0px 0px 150px 60px rgba(0, 0, 0, 0.8);
-`;
 const GetRoute = styled.button`
   cursor: pointer;
   position: absolute;

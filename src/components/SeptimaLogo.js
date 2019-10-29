@@ -2,9 +2,16 @@ import React from 'react';
 
 export default function Septima(props) {
   const { color, width, height, style } = props;
+  const defaultStyle = {
+    position: 'absolute',
+    bottom: 20,
+    left: 10,
+    zIndex: 3
+  };
+  const septimaStyle = style ? { ...defaultStyle, ...style } : defaultStyle;
   return (
     <svg
-      style={style}
+      style={septimaStyle}
       width={width ? width : height ? height * (75 / 19) : 75}
       height={height ? height : width ? width * (19 / 75) : 19}
       viewBox="0 0 75 19"
