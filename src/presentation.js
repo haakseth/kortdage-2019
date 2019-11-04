@@ -22,6 +22,7 @@ import Onboarding from './examples/Onboarding/Onboarding';
 import SeptimaLogo from './components/SeptimaLogo';
 import { bgColor } from './style';
 import Vignette from './components/Vignette';
+import ThankYou from './slides/ThankYou';
 
 // Require CSS
 require('normalize.css');
@@ -50,19 +51,29 @@ export default class Presentation extends React.Component {
       >
         <Slide
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.7)),
+            backgroundImage: `radial-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, .8)),
                 url(${disney})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
           align={'center flex-start'}
         >
-          <MapHeader style={{ color: '#fff' }}>
+          <h1 style={{ color: '#fff' }}>
             Mikroanimationer og interaktioner i kortapplikationer
-          </MapHeader>
-          <Vignette />
-          <SeptimaLogo />
+          </h1>
+          <A
+            style={{
+              position: 'absolute',
+              fontSize: 12,
+              top: 10,
+              left: 10
+            }}
+            href="https://haakseth.github.io/kortdage-2019/"
+          >
+            https://haakseth.github.io/kortdage-2019/
+          </A>
+          <SeptimaLogo color={bgColor} />
         </Slide>
         <Slide
           style={{
@@ -73,13 +84,24 @@ export default class Presentation extends React.Component {
             backgroundPosition: 'center'
           }}
         >
+          <A
+            style={{
+              position: 'absolute',
+              fontSize: 18,
+              top: 10,
+              left: 10
+            }}
+            href="https://haakseth.github.io/kortdage-2019/"
+          >
+            https://haakseth.github.io/kortdage-2019/
+          </A>
           <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
             <span>John Wika Haakseth</span>
-            <span>@haakseth</span>
             {/* eslint-disable-next-line */}
             <span>🇳🇴🇩🇰</span>
             {/* eslint-disable-next-line */}
             <span>🏐💻☕️🎸🐶</span>
+            <span>@haakseth</span>
             <SeptimaLogo color={bgColor} />
           </Fill>
         </Slide>
@@ -284,18 +306,30 @@ export default class Presentation extends React.Component {
             backgroundPosition: 'center'
           }}
         >
-          <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
-            <span>Tak!</span>
-            <span>Fotokredits</span>
-            <span>Links</span>
-          </Fill>
+          <ThankYou />
         </Slide>
       </Deck>
     );
   }
 }
 
-const Fill = styled.div`
+export const A = styled.a`
+  color: ${bgColor};
+`;
+
+export const UL = styled.ul`
+  list-style: none;
+  padding-inline-start: 0;
+  li {
+    margin-top: 4px;
+  }
+`;
+
+export const ListWrapper = styled.div`
+  font-size: 12px;
+  text-align: start;
+`;
+export const Fill = styled.div`
   position: absolute;
   z-index: 1;
   top: 0;
