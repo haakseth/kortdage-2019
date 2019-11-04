@@ -2,45 +2,15 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styled from 'styled-components';
-import along from '@turf/along';
-import length from '@turf/length';
 import {
-  // toTapHouse
-  toOslo as routeFromApi
+  toTapHouse as routeFromApi
+  // toOslo as routeFromApi
 } from './api';
 import Vignette from '../../components/Vignette';
-export default function Map() {
+export default function StaticRoute() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
-
   const [route, setRoute] = useState(undefined);
-
-  const getRoute = () => {
-    if (route) setRoute(undefined);
-    else {
-      const alongDist = length(routeFromApi) / 120;
-      const routeEven = {
-        ...routeFromApi,
-        features: [
-          {
-            ...routeFromApi.features[0],
-            geometry: { ...routeFromApi.features[0].geometry, coordinates: [] }
-          }
-        ],
-        originalRoute: routeFromApi
-      };
-      for (var i = 0; i < 120; i++) {
-        const newCoord = along(
-          routeFromApi.features[0].geometry,
-          alongDist * i
-        );
-        routeEven.features[0].geometry.coordinates.push(
-          newCoord.geometry.coordinates
-        );
-      }
-      setRoute(routeEven);
-    }
-  };
   const [geoJson, setGeoJson] = useState({
     type: 'FeatureCollection',
     features: [
@@ -53,6 +23,7 @@ export default function Map() {
       }
     ]
   });
+
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
       mapboxgl.accessToken =
@@ -60,16 +31,13 @@ export default function Map() {
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4',
-        // center: [12.565948, 55.670915],
-        center: [11.91, 57.8],
-        zoom: 5
+        center: [12.566, 55.671],
+        // center: [11.91, 57.8],
+        zoom: 14
       });
 
       mapboxMap.on('load', () => {
         setMap(mapboxMap);
-        mapboxMap.on('click', e => {
-          console.log(e.lngLat);
-        });
         mapboxMap.addLayer({
           id: 'line-animation',
           type: 'line',
@@ -90,18 +58,21 @@ export default function Map() {
       });
     };
     if (!map) initializeMap({ setMap, mapContainer });
-    /*eslint-disable-next-line */
   }, [map]);
 
   useEffect(() => {
+    if (geoJson && map) {
+      map.getSource('line-animation').setData(geoJson);
+    }
+  }, [geoJson, map]);
+
+  useEffect(() => {
     if (route) {
-      // map.fitBounds(route.features[0].bbox, {
-      //   padding: 200
-      //   // speed: 10
-      // });
-      animateLine();
+      // vis rute
+      setGeoJson(routeFromApi);
     } else {
       setGeoJson({
+        // reset lag
         type: 'FeatureCollection',
         features: [
           {
@@ -116,37 +87,12 @@ export default function Map() {
     }
     /*eslint-disable-next-line */
   }, [route]);
-  useEffect(() => {
-    if (geoJson && map) {
-      // console.log(geoJson.features[0].geometry.coordinates);
-      map.getSource('line-animation').setData(geoJson);
-    }
-    /*eslint-disable-next-line */
-  }, [geoJson]);
-  // const [animation, setAnimation] = useState(undefined);
-  let progress = 0;
-  const animateLine = () => {
-    const antalpunkter = route.features[0].geometry.coordinates.length;
-    const antalpunkterPerFrame =
-      antalpunkter > 60 ? Math.round(antalpunkter / 60) : 1;
-    if (progress < antalpunkter - antalpunkterPerFrame) {
-      // append new coordinates to the lineString
-      geoJson.features[0].geometry.coordinates = [
-        ...geoJson.features[0].geometry.coordinates,
-        ...route.features[0].geometry.coordinates.slice(
-          progress,
-          progress + antalpunkterPerFrame
-        )
-      ];
 
-      progress += antalpunkterPerFrame;
-      setGeoJson({ ...geoJson });
-
-      // Request the next frame of the animation.
-      requestAnimationFrame(animateLine);
+  const getRoute = () => {
+    if (!route) {
+      setRoute(routeFromApi);
     } else {
-      setGeoJson(route.originalRoute);
-      progress = 0;
+      setRoute(undefined);
     }
   };
   return (

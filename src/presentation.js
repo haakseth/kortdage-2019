@@ -14,7 +14,9 @@ import dictionary from './img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg';
 import motivation from './img/andrew-neel-1-29wyvvLJA-unsplash.jpg';
 import shaka1 from './img/shaka1.jpg';
 import shaka2 from './img/shaka2.jpg';
-import AnimatedRoute from './examples/AnimatedRoute/AnimatedRoute';
+import StaticRoute from './examples/AnimatedRoute/StaticRoute';
+import AnimatedRoute1 from './examples/AnimatedRoute/AnimatedRoute1';
+import AnimatedRoute2 from './examples/AnimatedRoute/AnimatedRoute2';
 import SelectFeature from './examples/SelectFeature/SelectFeature';
 import Onboarding from './examples/Onboarding/Onboarding';
 import SeptimaLogo from './components/SeptimaLogo';
@@ -226,6 +228,9 @@ export default class Presentation extends React.Component {
           </List>
           <SeptimaLogo color={bgColor} />
         </Slide>
+        <Slide>
+          På web: CSS, keyframes, rammeverker. react-spring, greensock
+        </Slide>
         <Slide
           align={'center center'}
           style={{
@@ -241,14 +246,33 @@ export default class Presentation extends React.Component {
           <Vignette />
           <SeptimaLogo />
         </Slide>
+        <Slide>
+          Kortbiblioteker er canvas eller web gl, så ingen css. De har ofte hver
+          sine set med animationer tilgængelige.
+        </Slide>
         <Slide align={'center flex-start'}>
-          <MapHeader>Fokus på valgt element</MapHeader>
+          <MapHeader>mapbox-gl: setStyle()</MapHeader>
           <SelectFeature />
           <SeptimaLogo color={'#fff'} />
         </Slide>
         <Slide align={'center flex-start'}>
           <MapHeader>Custom kortanimation</MapHeader>
-          <AnimatedRoute />
+          <StaticRoute />
+          <SeptimaLogo color={bgColor} />
+        </Slide>
+        <Slide>requestAnimationFrame()</Slide>
+        <Slide align={'center flex-start'}>
+          <MapHeader>Custom kortanimation</MapHeader>
+          <AnimatedRoute1 />
+          <SeptimaLogo color={bgColor} />
+        </Slide>
+        <Slide>
+          Lines can be of varying lengths, how can we get a predictable
+          animation? GIS!!!!
+        </Slide>
+        <Slide align={'center flex-start'}>
+          <MapHeader>Custom kortanimation</MapHeader>
+          <AnimatedRoute2 />
           <SeptimaLogo color={bgColor} />
         </Slide>
         <Slide
