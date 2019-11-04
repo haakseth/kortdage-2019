@@ -1,10 +1,10 @@
 {
   "main.css": "/kortdage-2019/static/css/main.e90a68ac.chunk.css",
-  "main.js": "/kortdage-2019/static/js/main.0b72396c.chunk.js",
-  "main.js.map": "/kortdage-2019/static/js/main.0b72396c.chunk.js.map",
+  "main.js": "/kortdage-2019/static/js/main.8a368221.chunk.js",
+  "main.js.map": "/kortdage-2019/static/js/main.8a368221.chunk.js.map",
   "static/css/1.f23a2e37.chunk.css": "/kortdage-2019/static/css/1.f23a2e37.chunk.css",
-  "static/js/1.592ffe20.chunk.js": "/kortdage-2019/static/js/1.592ffe20.chunk.js",
-  "static/js/1.592ffe20.chunk.js.map": "/kortdage-2019/static/js/1.592ffe20.chunk.js.map",
+  "static/js/1.83bf13df.chunk.js": "/kortdage-2019/static/js/1.83bf13df.chunk.js",
+  "static/js/1.83bf13df.chunk.js.map": "/kortdage-2019/static/js/1.83bf13df.chunk.js.map",
   "runtime~main.js": "/kortdage-2019/static/js/runtime~main.2c043c7b.js",
   "runtime~main.js.map": "/kortdage-2019/static/js/runtime~main.2c043c7b.js.map",
   "static/media/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg": "/kortdage-2019/static/media/waldemar-brandt-U3Ptj3jafX8-unsplash.104bc75a.jpg",
@@ -15,6 +15,6 @@
   "static/css/main.e90a68ac.chunk.css.map": "/kortdage-2019/static/css/main.e90a68ac.chunk.css.map",
   "static/css/1.f23a2e37.chunk.css.map": "/kortdage-2019/static/css/1.f23a2e37.chunk.css.map",
   "index.html": "/kortdage-2019/index.html",
-  "precache-manifest.ae99e4d157a3f0ef52189d8b04028fa7.js": "/kortdage-2019/precache-manifest.ae99e4d157a3f0ef52189d8b04028fa7.js",
+  "precache-manifest.3acd7cd521f4b3fd4ef142588bc22588.js": "/kortdage-2019/precache-manifest.3acd7cd521f4b3fd4ef142588bc22588.js",
   "service-worker.js": "/kortdage-2019/service-worker.js"
 }
