@@ -1,10 +1,10 @@
 {
   "main.css": "/kortdage-2019/static/css/main.e90a68ac.chunk.css",
-  "main.js": "/kortdage-2019/static/js/main.8a368221.chunk.js",
-  "main.js.map": "/kortdage-2019/static/js/main.8a368221.chunk.js.map",
+  "main.js": "/kortdage-2019/static/js/main.09235346.chunk.js",
+  "main.js.map": "/kortdage-2019/static/js/main.09235346.chunk.js.map",
   "static/css/1.f23a2e37.chunk.css": "/kortdage-2019/static/css/1.f23a2e37.chunk.css",
-  "static/js/1.83bf13df.chunk.js": "/kortdage-2019/static/js/1.83bf13df.chunk.js",
-  "static/js/1.83bf13df.chunk.js.map": "/kortdage-2019/static/js/1.83bf13df.chunk.js.map",
+  "static/js/1.c0c1a73a.chunk.js": "/kortdage-2019/static/js/1.c0c1a73a.chunk.js",
+  "static/js/1.c0c1a73a.chunk.js.map": "/kortdage-2019/static/js/1.c0c1a73a.chunk.js.map",
   "runtime~main.js": "/kortdage-2019/static/js/runtime~main.2c043c7b.js",
   "runtime~main.js.map": "/kortdage-2019/static/js/runtime~main.2c043c7b.js.map",
   "static/media/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg": "/kortdage-2019/static/media/waldemar-brandt-U3Ptj3jafX8-unsplash.104bc75a.jpg",
@@ -12,9 +12,9 @@
   "static/media/shaka1.jpg": "/kortdage-2019/static/media/shaka1.8c6c282a.jpg",
   "static/media/shaka2.jpg": "/kortdage-2019/static/media/shaka2.a3d7733b.jpg",
   "static/media/thomas-kelley-5YtjgRNTli4-unsplash.jpg": "/kortdage-2019/static/media/thomas-kelley-5YtjgRNTli4-unsplash.95cbd538.jpg",
-  "static/css/main.e90a68ac.chunk.css.map": "/kortdage-2019/static/css/main.e90a68ac.chunk.css.map",
   "static/css/1.f23a2e37.chunk.css.map": "/kortdage-2019/static/css/1.f23a2e37.chunk.css.map",
+  "static/css/main.e90a68ac.chunk.css.map": "/kortdage-2019/static/css/main.e90a68ac.chunk.css.map",
   "index.html": "/kortdage-2019/index.html",
-  "precache-manifest.3acd7cd521f4b3fd4ef142588bc22588.js": "/kortdage-2019/precache-manifest.3acd7cd521f4b3fd4ef142588bc22588.js",
+  "precache-manifest.e3c2bca8592f69de0a2ae0eb419d5807.js": "/kortdage-2019/precache-manifest.e3c2bca8592f69de0a2ae0eb419d5807.js",
   "service-worker.js": "/kortdage-2019/service-worker.js"
 }
