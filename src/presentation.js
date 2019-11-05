@@ -23,6 +23,8 @@ import SeptimaLogo from './components/SeptimaLogo';
 import { bgColor } from './style';
 import Vignette from './components/Vignette';
 import ThankYou from './slides/ThankYou';
+import Streets from './examples/streets/Streets';
+import VignetteTopLeft from './components/VignetteTopLeft';
 
 // Require CSS
 require('normalize.css');
@@ -267,6 +269,25 @@ export default class Presentation extends React.Component {
           </Fill>
           <Vignette />
           <SeptimaLogo />
+        </Slide>
+        <Slide>
+          <Fill column>
+            <Streets />
+          </Fill>
+          <SeptimaLogo color={'#fff'} />
+          <VignetteTopLeft />
+          <h1
+            style={{
+              position: 'absolute',
+              color: bgColor,
+              zIndex: 4,
+              top: 0,
+              pointerEvents: 'none'
+              // left: 100
+            }}
+          >
+            Interaktioner i kort
+          </h1>
         </Slide>
         <Slide>
           Kortbiblioteker er canvas eller web gl, så ingen css. De har ofte hver
