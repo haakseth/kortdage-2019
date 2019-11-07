@@ -54,7 +54,7 @@ export default function Streets() {
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
       mapboxgl.accessToken =
-        'pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2l5NGg2Y3ljMDAxaTJ5bHF5aXF0NHRuciJ9.aVkFfSGQhUYb9bmf4JtkTg';
+        'pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl2NGtzMDIwNzNubG5zdndram44NiJ9.0n2hr2WOJmnC1kNFyq7s_Q';
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/haakseth/ck2kw48j83sjy1cpohx5kqxou',
