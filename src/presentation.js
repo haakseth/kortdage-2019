@@ -247,7 +247,7 @@ export default class Presentation extends React.Component {
               <ListItem>Giv feedback på input</ListItem>
             </Appear>
             <Appear>
-              <ListItem>De' sjovt</ListItem>
+              <ListItem>Gør applikationen mer levende</ListItem>
             </Appear>
           </List>
           <SeptimaLogo color={bgColor} />
