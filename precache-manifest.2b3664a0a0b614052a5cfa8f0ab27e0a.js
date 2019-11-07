@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/kortdage-2019/static/media/waldemar-brandt-U3Ptj3jafX8-unsplash.104bc75a.jpg"
   },
   {
-    "revision": "09235346acdc71fb82dc",
+    "revision": "b3768d593fe0883f78bd",
     "url": "/kortdage-2019/static/css/main.e90a68ac.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/kortdage-2019/static/js/runtime~main.2c043c7b.js"
   },
   {
-    "revision": "09235346acdc71fb82dc",
-    "url": "/kortdage-2019/static/js/main.09235346.chunk.js"
+    "revision": "b3768d593fe0883f78bd",
+    "url": "/kortdage-2019/static/js/main.b3768d59.chunk.js"
   },
   {
     "revision": "95cbd538064400f7c358ee676e878997",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/kortdage-2019/static/css/1.f23a2e37.chunk.css"
   },
   {
-    "revision": "b52e5fdbb348b1816bf700a40760bf36",
+    "revision": "62a0e85780746b2e291dcfd4e8240420",
     "url": "/kortdage-2019/index.html"
   }
 ];
