@@ -1,7 +1,7 @@
 {
   "main.css": "/kortdage-2019/static/css/main.e90a68ac.chunk.css",
-  "main.js": "/kortdage-2019/static/js/main.b3768d59.chunk.js",
-  "main.js.map": "/kortdage-2019/static/js/main.b3768d59.chunk.js.map",
+  "main.js": "/kortdage-2019/static/js/main.dd15fe8c.chunk.js",
+  "main.js.map": "/kortdage-2019/static/js/main.dd15fe8c.chunk.js.map",
   "static/css/1.f23a2e37.chunk.css": "/kortdage-2019/static/css/1.f23a2e37.chunk.css",
   "static/js/1.c0c1a73a.chunk.js": "/kortdage-2019/static/js/1.c0c1a73a.chunk.js",
   "static/js/1.c0c1a73a.chunk.js.map": "/kortdage-2019/static/js/1.c0c1a73a.chunk.js.map",
@@ -12,9 +12,9 @@
   "static/media/shaka1.jpg": "/kortdage-2019/static/media/shaka1.8c6c282a.jpg",
   "static/media/shaka2.jpg": "/kortdage-2019/static/media/shaka2.a3d7733b.jpg",
   "static/media/thomas-kelley-5YtjgRNTli4-unsplash.jpg": "/kortdage-2019/static/media/thomas-kelley-5YtjgRNTli4-unsplash.95cbd538.jpg",
-  "static/css/1.f23a2e37.chunk.css.map": "/kortdage-2019/static/css/1.f23a2e37.chunk.css.map",
   "static/css/main.e90a68ac.chunk.css.map": "/kortdage-2019/static/css/main.e90a68ac.chunk.css.map",
+  "static/css/1.f23a2e37.chunk.css.map": "/kortdage-2019/static/css/1.f23a2e37.chunk.css.map",
   "index.html": "/kortdage-2019/index.html",
-  "precache-manifest.2b3664a0a0b614052a5cfa8f0ab27e0a.js": "/kortdage-2019/precache-manifest.2b3664a0a0b614052a5cfa8f0ab27e0a.js",
+  "precache-manifest.8989b52ac6d03055bdd428ea9f07d577.js": "/kortdage-2019/precache-manifest.8989b52ac6d03055bdd428ea9f07d577.js",
   "service-worker.js": "/kortdage-2019/service-worker.js"
 }

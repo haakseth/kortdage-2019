@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kortdage-2019/precache-manifest.2b3664a0a0b614052a5cfa8f0ab27e0a.js"
+  "/kortdage-2019/precache-manifest.8989b52ac6d03055bdd428ea9f07d577.js"
 );
 
 workbox.clientsClaim();
