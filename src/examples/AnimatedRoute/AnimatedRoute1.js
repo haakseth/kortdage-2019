@@ -39,8 +39,8 @@ export default function Map() {
         container: mapContainer.current,
         style: 'mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4',
         // center: [12.565948, 55.670915],
-        center: [11.91, 57.8],
-        zoom: 5
+        center: [12.566, 55.671],
+        zoom: 11
       });
 
       mapboxMap.on('load', () => {

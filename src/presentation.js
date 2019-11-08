@@ -12,6 +12,7 @@ import createTheme from 'spectacle/lib/themes/default';
 import disney from './img/thomas-kelley-5YtjgRNTli4-unsplash.jpg';
 import dictionary from './img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg';
 import motivation from './img/andrew-neel-1-29wyvvLJA-unsplash.jpg';
+import motion from './img/ahmad-odeh-ckm1yAe6jhU-unsplash.jpg';
 import shaka1 from './img/shaka1.jpg';
 import shaka2 from './img/shaka2.jpg';
 import StaticRoute from './examples/AnimatedRoute/StaticRoute';
@@ -46,7 +47,7 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck
-        transition={['fade']}
+        // transition={['fade']}
         progress={'bar'}
         transitionDuration={500}
         theme={theme}
@@ -247,13 +248,34 @@ export default class Presentation extends React.Component {
               <ListItem>Giv feedback på input</ListItem>
             </Appear>
             <Appear>
-              <ListItem>Gør applikationen mer levende</ListItem>
+              <ListItem>Bring liv til applikationen</ListItem>
             </Appear>
           </List>
           <SeptimaLogo color={bgColor} />
         </Slide>
-        <Slide>
-          På web: CSS, keyframes, rammeverker. react-spring, greensock
+        <Slide
+          align={'center flex-start'}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+            url(${motion})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <MapHeader style={{ top: 0 }}>Webanimationer</MapHeader>
+          <div
+            style={{
+              color: bgColor,
+              position: 'absolute',
+              zIndex: 4,
+              top: 120,
+              left: 20,
+              textAlign: 'left'
+            }}
+          >
+            CSS, keyframes, rammeverker
+          </div>
         </Slide>
         <Slide
           align={'center center'}
@@ -270,53 +292,115 @@ export default class Presentation extends React.Component {
           <Vignette />
           <SeptimaLogo />
         </Slide>
-        <Slide>
-          <Fill column>
-            <Streets />
-          </Fill>
-          <SeptimaLogo color={'#fff'} />
-          <VignetteTopLeft />
-          <h1
+        <Slide align={'center flex-start'}>
+          <MapHeader>Kortanimationer</MapHeader>
+          <div
             style={{
-              position: 'absolute',
               color: bgColor,
+              position: 'absolute',
               zIndex: 4,
-              top: 0,
+              top: 150,
+              left: 20,
+              textAlign: 'left',
               pointerEvents: 'none'
-              // left: 100
             }}
           >
-            Interaktioner i kort
-          </h1>
-        </Slide>
-        <Slide>
-          Kortbiblioteker er canvas eller web gl, så ingen css. De har ofte hver
-          sine set med animationer tilgængelige.
-        </Slide>
-        <Slide align={'center flex-start'}>
-          <MapHeader>mapbox-gl: setStyle()</MapHeader>
+            Kortbiblioteker er baseret på canvas eller web gl, så ingen css. De
+            har ofte hver sine set med indebyggede animationer tilgængelige.
+          </div>
+          <List
+            style={{
+              color: bgColor,
+              position: 'absolute',
+              zIndex: 4,
+              bottom: 20,
+              left: 20,
+              listStyle: 'none',
+              pointerEvents: 'none'
+            }}
+          >
+            <ListItem>Generelt: pan/zoom/fitBounds/flyTo ...</ListItem>
+            <ListItem>Mapbox: setStyle()</ListItem>
+          </List>
           <SelectFeature />
           <SeptimaLogo color={'#fff'} />
         </Slide>
         <Slide align={'center flex-start'}>
           <MapHeader>Custom kortanimation</MapHeader>
+          <div
+            style={{
+              color: bgColor,
+              position: 'absolute',
+              zIndex: 4,
+              bottom: 50,
+              left: 20,
+              listStyle: 'none',
+              pointerEvents: 'none'
+            }}
+          >
+            Lad os animere en rute
+          </div>
           <StaticRoute />
           <SeptimaLogo color={bgColor} />
         </Slide>
-        <Slide>requestAnimationFrame()</Slide>
         <Slide align={'center flex-start'}>
-          <MapHeader>Custom kortanimation</MapHeader>
+          <MapHeader>requestAnimationFrame()</MapHeader>
+          <div
+            style={{
+              color: bgColor,
+              position: 'absolute',
+              zIndex: 4,
+              bottom: 40,
+              left: 20,
+              listStyle: 'none',
+              pointerEvents: 'none'
+            }}
+          >
+            Udfordring: Ruter kan være korte og lange
+          </div>
           <AnimatedRoute1 />
           <SeptimaLogo color={bgColor} />
         </Slide>
-        <Slide>
-          Lines can be of varying lengths, how can we get a predictable
-          animation? GIS!!!!
-        </Slide>
         <Slide align={'center flex-start'}>
-          <MapHeader>Custom kortanimation</MapHeader>
+          {/* <MapHeader>Custom kortanimation</MapHeader> */}
+          <List
+            style={{
+              color: bgColor,
+              position: 'absolute',
+              zIndex: 4,
+              bottom: 20,
+              left: 20,
+              pointerEvents: 'none'
+            }}
+          >
+            <ListItem>
+              Deler linjen ind i koordinater med lig afstand mellem sig
+            </ListItem>
+            <ListItem>
+              Antal koordinater per frame, avh af linjens længde
+            </ListItem>
+          </List>
           <AnimatedRoute2 />
           <SeptimaLogo color={bgColor} />
+        </Slide>
+        <Slide align={'center flex-start'}>
+          <MapHeader>Interaktioner i kort</MapHeader>
+          {/* <div
+            style={{
+              color: bgColor,
+              position: 'absolute',
+              zIndex: 4,
+              bottom: 40,
+              left: 20,
+              listStyle: 'none',
+              pointerEvents: 'none'
+            }}
+          >
+            Zoom ind
+          </div> */}
+          <Streets />
+          <SeptimaLogo color={'#fff'} />
+          <VignetteTopLeft />
         </Slide>
         <Slide
           style={{
@@ -370,5 +454,6 @@ export const Fill = styled.div`
 const MapHeader = styled.h1`
   position: absolute;
   z-index: 4;
+  left: 20px;
   color: ${bgColor};
 `;

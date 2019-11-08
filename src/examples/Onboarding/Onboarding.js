@@ -7,6 +7,7 @@ import Phone from '../../components/Phone';
 import Button from './Button';
 import InputWithIcon from './InputWithIcon';
 import PiratLogo from './PiratLogo';
+import Logo from './Logo';
 
 export default function Onboarding() {
   const [username, setUsername] = useState('');
@@ -53,7 +54,8 @@ export default function Onboarding() {
     if (introDone) {
       return (
         <Wrapper style={{ justifyContent: 'center' }}>
-          <PiratLogo style={{ alignSelf: 'center', marginBottom: 30 }} />
+          <PiratLogo style={{ alignSelf: 'center', marginBottom: 20 }} />
+          <h1>Din pirat</h1>
           <InputWithIcon
             autofocus
             value={username}
@@ -115,6 +117,9 @@ export default function Onboarding() {
       : swipeAnimation;
     return (
       <Wrapper>
+        <div style={{ alignSelf: 'center', marginTop: 20 }}>
+          <Logo height={100} />
+        </div>
         <h2 style={{ marginBottom: 5 }}>Septimas fantastiske</h2>
         <h1 style={{ marginTop: 10 }}>Piratagtige spil</h1>
         <animated.div
