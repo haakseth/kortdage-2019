@@ -1,23 +1,23 @@
-import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import styled from 'styled-components';
+import React, { useRef, useEffect, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import styled from "styled-components";
 import {
   toTapHouse as routeFromApi
   // toOslo as routeFromApi
-} from './api';
-import Vignette from '../../components/Vignette';
+} from "./api";
+import Vignette from "../../components/Vignette";
 export default function StaticRoute() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
   const [route, setRoute] = useState(undefined);
   const [geoJson, setGeoJson] = useState({
-    type: 'FeatureCollection',
+    type: "FeatureCollection",
     features: [
       {
-        type: 'Feature',
+        type: "Feature",
         geometry: {
-          type: 'LineString',
+          type: "LineString",
           coordinates: []
         }
       }
@@ -27,32 +27,32 @@ export default function StaticRoute() {
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
       mapboxgl.accessToken =
-        'pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl0cHF3MDF6ZjNlbzZtbm9maXJjeiJ9.AKnQ0IMwoETT_Tci3rDTSQ';
+        "pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl0cHF3MDF6ZjNlbzZtbm9maXJjeiJ9.AKnQ0IMwoETT_Tci3rDTSQ";
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4',
-        center: [12.566, 55.671],
+        style: "mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4",
+        center: [12.566, 55.673],
         // center: [11.91, 57.8],
         zoom: 14
       });
 
-      mapboxMap.on('load', () => {
+      mapboxMap.on("load", () => {
         setMap(mapboxMap);
         mapboxMap.addLayer({
-          id: 'line-animation',
-          type: 'line',
+          id: "line-animation",
+          type: "line",
           source: {
-            type: 'geojson',
+            type: "geojson",
             data: geoJson
           },
           layout: {
-            'line-cap': 'round',
-            'line-join': 'round'
+            "line-cap": "round",
+            "line-join": "round"
           },
           paint: {
-            'line-color': '#ed6498',
-            'line-width': 10,
-            'line-opacity': 0.8
+            "line-color": "#ed6498",
+            "line-width": 10,
+            "line-opacity": 0.8
           }
         });
       });
@@ -62,7 +62,7 @@ export default function StaticRoute() {
 
   useEffect(() => {
     if (geoJson && map) {
-      map.getSource('line-animation').setData(geoJson);
+      map.getSource("line-animation").setData(geoJson);
     }
   }, [geoJson, map]);
 
@@ -73,12 +73,12 @@ export default function StaticRoute() {
     } else {
       setGeoJson({
         // reset lag
-        type: 'FeatureCollection',
+        type: "FeatureCollection",
         features: [
           {
-            type: 'Feature',
+            type: "Feature",
             geometry: {
-              type: 'LineString',
+              type: "LineString",
               coordinates: []
             }
           }
@@ -98,17 +98,17 @@ export default function StaticRoute() {
   return (
     <div
       style={{
-        position: 'absolute',
+        position: "absolute",
         zIndex: 1,
         top: 0,
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: 'none'
+        overflow: "none"
       }}
       ref={el => (mapContainer.current = el)}
     >
-      <GetRoute onClick={getRoute}>Klik</GetRoute>
+      <GetRoute onClick={getRoute}>Rute</GetRoute>
       <Vignette />
     </div>
   );

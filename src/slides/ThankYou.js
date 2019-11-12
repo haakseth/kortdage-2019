@@ -1,7 +1,8 @@
-import React from 'react';
-import { useMedia } from '../hooks/useMedia';
-import { size, bgColor } from '../style';
-import { ListWrapper, UL, A, Fill } from '../presentation';
+import React from "react";
+import styled from "styled-components";
+import { useMedia } from "../hooks/useMedia";
+import { size, bgColor } from "../style";
+import { ListWrapper, UL, Fill } from "../presentation";
 export default function ThankYou() {
   const isSmallScreen = useMedia(
     [`(max-width: ${size.small}px)`],
@@ -13,18 +14,18 @@ export default function ThankYou() {
       column
       style={{
         color: bgColor,
-        justifyContent: 'space-between',
-        padding: '1em'
+        justifyContent: "space-between",
+        padding: "1em"
       }}
     >
       {/* eslint-disable-next-line */}
-      <h1>Tak! 👌🥳🙏</h1>
+      <h1>Tak!</h1>
       <div
         style={{
-          display: 'flex',
-          flexDirection: isSmallScreen ? 'column' : 'row',
-          justifyContent: 'space-evenly',
-          width: '100vw',
+          display: "flex",
+          flexDirection: isSmallScreen ? "column" : "row",
+          justifyContent: "space-evenly",
+          width: "100vw",
           padding: 20
         }}
       >
@@ -49,6 +50,11 @@ export default function ThankYou() {
             <li>
               <A href="https://unsplash.com/photos/ckm1yAe6jhU">
                 Ahmad Odeh - Unsplash
+              </A>
+            </li>
+            <li>
+              <A href="https://unsplash.com/photos/qH36EgNjPJY">
+                Alex Siale - Unsplash
               </A>
             </li>
           </UL>
@@ -79,11 +85,12 @@ export default function ThankYou() {
           </UL>
         </ListWrapper>
         <ListWrapper>
-          <h2>CodeSandboxes</h2>
+          <h2>Eksempler</h2>
           <UL>
-            <li>Eksempel: Onboarding</li>
-            <li>Eksempel: mapboxgl.setStyle()</li>
-            <li>Eksempel: Animére rute</li>
+            <li>Onboarding | kode</li>
+            <li>mapboxgl.setStyle() | kode</li>
+            <li>Animére rute | kode</li>
+            <li>Interaktion/Gader | kode</li>
           </UL>
         </ListWrapper>
         <ListWrapper>
@@ -109,3 +116,6 @@ export default function ThankYou() {
     </Fill>
   );
 }
+const A = styled.a`
+  color: ${bgColor};
+`;

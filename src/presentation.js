@@ -1,425 +1,404 @@
 // Import React
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
+import { useMedia } from "./hooks/useMedia";
+import { size } from "./style";
 
 // Import Spectacle Core tags
-import { Deck, Heading, ListItem, List, Slide, Text, Appear } from 'spectacle';
+import { Deck, Slide, Appear } from "spectacle";
 
 // import
 
 // Import theme
-import createTheme from 'spectacle/lib/themes/default';
-import disney from './img/thomas-kelley-5YtjgRNTli4-unsplash.jpg';
-import dictionary from './img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg';
-import motivation from './img/andrew-neel-1-29wyvvLJA-unsplash.jpg';
-import motion from './img/ahmad-odeh-ckm1yAe6jhU-unsplash.jpg';
-import shaka1 from './img/shaka1.jpg';
-import shaka2 from './img/shaka2.jpg';
-import StaticRoute from './examples/AnimatedRoute/StaticRoute';
-import AnimatedRoute1 from './examples/AnimatedRoute/AnimatedRoute1';
-import AnimatedRoute2 from './examples/AnimatedRoute/AnimatedRoute2';
-import SelectFeature from './examples/SelectFeature/SelectFeature';
-import Onboarding from './examples/Onboarding/Onboarding';
-import SeptimaLogo from './components/SeptimaLogo';
-import { bgColor } from './style';
-import Vignette from './components/Vignette';
-import ThankYou from './slides/ThankYou';
-import Streets from './examples/streets/Streets';
-import VignetteTopLeft from './components/VignetteTopLeft';
+import createTheme from "spectacle/lib/themes/default";
+import disney from "./img/thomas-kelley-5YtjgRNTli4-unsplash.jpg";
+import dictionary from "./img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg";
+import motivation from "./img/andrew-neel-1-29wyvvLJA-unsplash.jpg";
+import motion from "./img/ahmad-odeh-ckm1yAe6jhU-unsplash.jpg";
+import mountainRidge from "./img/alex-siale-qH36EgNjPJY-unsplash.jpg";
+import shaka1 from "./img/shaka1.jpg";
+import shaka2 from "./img/shaka2.jpg";
+import State from "./examples/State/State";
+import StaticRoute from "./examples/AnimatedRoute/StaticRoute";
+import AnimatedRoute1 from "./examples/AnimatedRoute/AnimatedRoute1";
+import AnimatedRoute2 from "./examples/AnimatedRoute/AnimatedRoute2";
+import SelectFeature from "./examples/SelectFeature/SelectFeature";
+import Onboarding from "./examples/Onboarding/Onboarding";
+import SeptimaLogo from "./components/SeptimaLogo";
+import { bgColor } from "./style";
+import Vignette from "./components/Vignette";
+import ThankYou from "./slides/ThankYou";
+import Streets from "./examples/streets/Streets";
+import VignetteTopLeft from "./components/VignetteTopLeft";
+import UrlTopLeft from "./components/UrlTopLeft";
 
 // Require CSS
-require('normalize.css');
+require("normalize.css");
 
 const theme = createTheme(
   {
     primary: bgColor,
-    secondary: '#1F2022',
-    tertiary: '#03A9FC',
-    quaternary: '#CECECE'
+    secondary: "#1F2022",
+    tertiary: "#03A9FC",
+    quaternary: "#CECECE"
   },
   {
-    primary: 'Montserrat',
-    secondary: 'Helvetica'
+    primary: "Montserrat",
+    secondary: "Helvetica"
   }
 );
 
-export default class Presentation extends React.Component {
-  render() {
-    return (
-      <Deck
-        // transition={['fade']}
-        progress={'bar'}
-        transitionDuration={500}
-        theme={theme}
-      >
-        <Slide
-          style={{
-            backgroundImage: `radial-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2),
+export default function Presentation() {
+  const isSmallScreen = useMedia(
+    [`(max-width: ${size.small}px)`],
+    [true],
+    false
+  );
+  return (
+    <Deck
+      // transition={['fade']}
+      progress={"bar"}
+      transitionDuration={500}
+      theme={theme}
+    >
+      <Slide
+        style={{
+          backgroundImage: `radial-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2),
                 rgba(0, 0, 0, .8)),
                 url(${disney})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-          align={'center flex-start'}
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+        align={"center flex-start"}
+      >
+        <H1 isSmallScreen={isSmallScreen} style={{ color: "#fff" }}>
+          Mikroanimationer og interaktioner i kortapplikationer
+        </H1>
+        <UrlTopLeft
+          isSmallScreen={isSmallScreen}
+          url={"https://haakseth.github.io/kortdage-2019/"}
         >
-          <h1 style={{ color: '#fff' }}>
-            Mikroanimationer og interaktioner i kortapplikationer
-          </h1>
-          <A
-            style={{
-              position: 'absolute',
-              fontSize: 12,
-              top: 10,
-              left: 10
-            }}
-            href="https://haakseth.github.io/kortdage-2019/"
-          >
-            https://haakseth.github.io/kortdage-2019/
-          </A>
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+          haakseth.github.io/kortdage-2019/
+        </UrlTopLeft>
+
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
                 rgba(0, 0, 0, 0.7)),
                 url(${shaka1})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <UrlTopLeft
+          isSmallScreen={isSmallScreen}
+          url={"https://haakseth.github.io/kortdage-2019/"}
         >
-          <A
-            style={{
-              position: 'absolute',
-              fontSize: 18,
-              top: 10,
-              left: 10
-            }}
-            href="https://haakseth.github.io/kortdage-2019/"
-          >
-            https://haakseth.github.io/kortdage-2019/
-          </A>
-          <Fill column style={{ color: bgColor, justifyContent: 'flex-end' }}>
-            <span>John Wika Haakseth</span>
-            {/* eslint-disable-next-line */}
-            <span>🇳🇴🇩🇰</span>
-            {/* eslint-disable-next-line */}
-            <span>🏐💻☕️🎸🐶</span>
-            <span>@haakseth</span>
-            <SeptimaLogo color={bgColor} />
-          </Fill>
-        </Slide>
-        <Slide
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
+          haakseth.github.io/kortdage-2019/
+        </UrlTopLeft>
+        <Fill column style={{ color: bgColor, justifyContent: "flex-end" }}>
+          <span>John Wika Haakseth</span>
+          {/* eslint-disable-next-line */}
+          <span>🇳🇴🇩🇰</span>
+          {/* eslint-disable-next-line */}
+          <span>🏐💻☕️🎸🐶</span>
+          <span>@haakseth</span>
+          <SeptimaLogo color={bgColor} />
+        </Fill>
+      </Slide>
+      <Slide
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
                 rgba(0, 0, 0, 0.5)),
                 url(${dictionary})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <Fill
+          column
+          style={{
+            justifyContent: "space-evenly"
           }}
         >
-          <Fill
-            column
-            style={{
-              justifyContent: 'space-evenly'
-            }}
-          >
+          <div>
+            <H2 isSmallScreen={isSmallScreen}>Animationer</H2>
+            <SlideText isSmallScreen={isSmallScreen}>
+              Billeder der simulerer bevægelse
+            </SlideText>
+          </div>
+          <div style={{ opacity: 0 }}>
             <div>
-              <Heading
-                style={{
-                  color: bgColor
-                }}
-                size={6}
-              >
-                Animationer
-              </Heading>
-              <Text
-                style={{
-                  color: bgColor
-                }}
-              >
-                Billeder der simulerer bevægelse
-              </Text>
+              <H2 isSmallScreen={isSmallScreen}>Interaktioner</H2>
+              <SlideText isSmallScreen={isSmallScreen}>
+                To eller flere elementer der reagerer på hinanden
+              </SlideText>
             </div>
-            <div style={{ opacity: 0 }}>
+          </div>
+        </Fill>
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)),
+                url(${dictionary})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <Fill
+          column
+          style={{
+            justifyContent: "space-evenly"
+          }}
+        >
+          <div>
+            <H2 isSmallScreen={isSmallScreen}>Mikroanimationer</H2>
+            <SlideText isSmallScreen={isSmallScreen}>
+              Animationer der har et enkelt fokus
+            </SlideText>
+          </div>
+          <div>
+            <Appear>
               <div>
-                <Heading
-                  style={{
-                    color: bgColor
-                  }}
-                  size={6}
-                >
-                  Interaktioner
-                </Heading>
-                <Text
-                  style={{
-                    color: bgColor
-                  }}
-                >
+                <H2 isSmallScreen={isSmallScreen}>Interaktioner</H2>
+                <SlideText isSmallScreen={isSmallScreen}>
                   To eller flere elementer der reagerer på hinanden
-                </Text>
+                </SlideText>
               </div>
-            </div>
-          </Fill>
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
-                rgba(0, 0, 0, 0.5)),
-                url(${dictionary})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          <Fill
-            column
-            style={{
-              justifyContent: 'space-evenly'
-            }}
-          >
-            <div>
-              <Heading
-                style={{
-                  color: bgColor
-                }}
-                size={6}
-              >
-                Mikroanimationer
-              </Heading>
-              <Text
-                style={{
-                  color: bgColor
-                }}
-              >
-                Animationer der har et enkelt fokus
-              </Text>
-            </div>
-            <div>
-              <Appear>
-                <div>
-                  <Heading
-                    style={{
-                      color: bgColor
-                    }}
-                    size={6}
-                  >
-                    Interaktioner
-                  </Heading>
-                  <Text
-                    style={{
-                      color: bgColor
-                    }}
-                  >
-                    To eller flere elementer der reagerer på hinanden
-                  </Text>
-                </div>
-              </Appear>
-            </div>
-          </Fill>
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
+            </Appear>
+          </div>
+        </Fill>
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
               rgba(0, 0, 0, 0.5)),
               url(${motivation})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          <Heading
-            style={{
-              color: bgColor
-            }}
-            size={2}
-          >
-            {/* Hvorfor bruge animationer og interaktioner i kortapper? */}
-            Motivation
-          </Heading>
-          <List
-            style={{
-              color: bgColor
-            }}
-          >
-            {/* Framhev hva der er vigtig lige nu, call to action */}
-            <ListItem>Guide brugeren</ListItem>
-            <Appear>
-              {/* Det kan tage tid for et input at give resultat, animation kan give feedback på at noget sker */}
-              <ListItem>Giv feedback på input</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Bring liv til applikationen</ListItem>
-            </Appear>
-          </List>
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide
-          align={'center flex-start'}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <H1 isSmallScreen={isSmallScreen}>
+          {/* Hvorfor bruge animationer og interaktioner i kortapper? */}
+          Motivation
+        </H1>
+        <SlideText isSmallScreen={isSmallScreen}>
+          Animationer fanger brugerens opmærksomhed
+        </SlideText>
+        <List isSmallScreen={isSmallScreen}>
+          {/* Framhev hva der er vigtig lige nu, call to action */}
+          <Appear>
+            <li>Guide brugeren</li>
+          </Appear>
+          <Appear>
+            {/* Det kan tage tid for et input at give resultat, animation kan give feedback på at noget sker */}
+            <li>Giv feedback på input</li>
+          </Appear>
+          <Appear>
+            <li>Bring liv til applikationen</li>
+          </Appear>
+        </List>
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide
+        align={"center flex-start"}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)),
             url(${motion})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          <MapHeader style={{ top: 0 }}>Webanimationer</MapHeader>
-          <div
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              top: 120,
-              left: 20,
-              textAlign: 'left'
-            }}
-          >
-            CSS, keyframes, rammeverker
-          </div>
-        </Slide>
-        <Slide
-          align={'center center'}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <H2 isSmallScreen={isSmallScreen}>Webanimationer</H2>
+        <SlideText isSmallScreen={isSmallScreen}>
+          CSS, keyframes, rammeverker
+          {/* </div> */}
+        </SlideText>
+      </Slide>
+      <Slide
+        align={"center center"}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
               rgba(0, 0, 0, 0.7))`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <Fill column>
+          <Onboarding />
+        </Fill>
+        <Vignette />
+        <SeptimaLogo />
+      </Slide>
+      <Slide align={"center flex-start"}>
+        <MapHeader isSmallScreen={isSmallScreen}>Kortanimationer</MapHeader>
+        {/* Kortbiblioteker er baseret på canvas eller web gl, så ingen css. De
+          har ofte hver sine set med indebyggede animationer tilgængelige.*/}
+        <List
+          isSmallScreen={isSmallScreen}
+          style={{
+            position: "absolute",
+            zIndex: 4,
+            bottom: isSmallScreen ? 30 : 20,
+            left: isSmallScreen ? -30 : 0,
+            listStyle: "none"
+            // pointerEvents: "none"
           }}
         >
-          <Fill column>
-            <Onboarding />
-          </Fill>
-          <Vignette />
-          <SeptimaLogo />
-        </Slide>
-        <Slide align={'center flex-start'}>
-          <MapHeader>Kortanimationer</MapHeader>
-          <div
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              top: 150,
-              left: 20,
-              textAlign: 'left',
-              pointerEvents: 'none'
-            }}
-          >
-            Kortbiblioteker er baseret på canvas eller web gl, så ingen css. De
-            har ofte hver sine set med indebyggede animationer tilgængelige.
-          </div>
-          <List
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              bottom: 20,
-              left: 20,
-              listStyle: 'none',
-              pointerEvents: 'none'
-            }}
-          >
-            <ListItem>Generelt: pan/zoom/fitBounds/flyTo ...</ListItem>
-            <ListItem>Mapbox: setStyle()</ListItem>
-          </List>
-          <SelectFeature />
-          <SeptimaLogo color={'#fff'} />
-        </Slide>
-        <Slide align={'center flex-start'}>
-          <MapHeader>Custom kortanimation</MapHeader>
-          <div
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              bottom: 50,
-              left: 20,
-              listStyle: 'none',
-              pointerEvents: 'none'
-            }}
-          >
-            Lad os animere en rute
-          </div>
-          <StaticRoute />
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide align={'center flex-start'}>
-          <MapHeader>requestAnimationFrame()</MapHeader>
-          <div
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              bottom: 40,
-              left: 20,
-              listStyle: 'none',
-              pointerEvents: 'none'
-            }}
-          >
-            Udfordring: Ruter kan være korte og lange
-          </div>
-          <AnimatedRoute1 />
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide align={'center flex-start'}>
-          {/* <MapHeader>Custom kortanimation</MapHeader> */}
-          <List
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              bottom: 20,
-              left: 20,
-              pointerEvents: 'none'
-            }}
-          >
-            <ListItem>
-              Deler linjen ind i koordinater med lig afstand mellem sig
-            </ListItem>
-            <ListItem>
-              Antal koordinater per frame, avh af linjens længde
-            </ListItem>
-          </List>
-          <AnimatedRoute2 />
-          <SeptimaLogo color={bgColor} />
-        </Slide>
-        <Slide align={'center flex-start'}>
-          <MapHeader>Interaktioner i kort</MapHeader>
-          {/* <div
-            style={{
-              color: bgColor,
-              position: 'absolute',
-              zIndex: 4,
-              bottom: 40,
-              left: 20,
-              listStyle: 'none',
-              pointerEvents: 'none'
-            }}
-          >
-            Zoom ind
-          </div> */}
-          <Streets />
-          <SeptimaLogo color={'#fff'} />
-          <VignetteTopLeft />
-        </Slide>
-        <Slide
+          <li>Generelt: pan/zoom/fitBounds/flyTo ...</li>
+          <li>Mapbox: setStyle()</li>
+        </List>
+        <SelectFeature />
+        <SeptimaLogo color={"#fff"} />
+      </Slide>
+      <Slide align={"center flex-start"}>
+        <MapHeader isSmallScreen={isSmallScreen}>
+          Custom kortanimation
+        </MapHeader>
+        <div
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+            color: bgColor,
+            position: "absolute",
+            zIndex: 4,
+            bottom: 50,
+            left: 20,
+            listStyle: "none"
+            // pointerEvents: "none"
+          }}
+        >
+          Lad os animere en rute
+        </div>
+        <StaticRoute />
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide align={"center flex-start"}>
+        <MapHeader isSmallScreen={isSmallScreen}>
+          requestAnimationFrame()
+        </MapHeader>
+        <SlideText
+          isSmallScreen={isSmallScreen}
+          style={{
+            position: "absolute",
+            zIndex: 4,
+            bottom: 40,
+            left: 20,
+            listStyle: "none"
+            // pointerEvents: "none"
+          }}
+        >
+          Udfordring: Ruter kan være korte og lange
+        </SlideText>
+        <AnimatedRoute1 />
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide align={"center flex-start"}>
+        <List
+          isSmallScreen={isSmallScreen}
+          style={{
+            position: "absolute",
+            zIndex: 6,
+            bottom: isSmallScreen ? 30 : 20,
+            left: isSmallScreen ? -30 : 0,
+            listStyle: "none"
+            // pointerEvents: "none"
+          }}
+        >
+          <li>Deler linjen ind i koordinater med lig afstand mellem sig</li>
+          <li>Antal koordinater per frame, avh af linjens længde</li>
+        </List>
+        <AnimatedRoute2 />
+        <SeptimaLogo color={bgColor} />
+      </Slide>
+      <Slide align={"center flex-start"}>
+        <State />
+        <SeptimaLogo color={"#fff"} />
+      </Slide>
+      <Slide
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.7)),
+                url(${mountainRidge})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <H2 isSmallScreen={isSmallScreen}>State i kortapplikationer</H2>
+        <List isSmallScreen={isSmallScreen}>
+          <li>Igen er kort specielle</li>
+          <li>Kortet skal reagere på state-ændringer</li>
+          <li>React: componentDidUpdate, useEffect</li>
+          <li>VueJS: watch</li>
+        </List>
+        <Vignette />
+      </Slide>
+      <Slide align={"center flex-start"}>
+        <MapHeader isSmallScreen={isSmallScreen}>
+          Interaktioner i kort
+        </MapHeader>
+        <Streets />
+        <SeptimaLogo color={"#fff"} />
+        <VignetteTopLeft />
+      </Slide>
+      <Slide
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),
                 rgba(0, 0, 0, 0.7)),
                 url(${shaka2})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          <ThankYou />
-        </Slide>
-      </Deck>
-    );
-  }
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <ThankYou />
+      </Slide>
+    </Deck>
+  );
 }
 
-export const A = styled.a`
+const List = styled.ul`
+  text-align: left;
   color: ${bgColor};
+  font-size: 2.3rem;
+  ${props =>
+    props.isSmallScreen &&
+    css`
+      font-size: 1rem;
+    `};
+`;
+const SlideText = styled.p`
+  color: ${bgColor};
+  font-size: 2.66rem;
+
+  ${props =>
+    props.isSmallScreen &&
+    css`
+      font-size: 1.33rem;
+    `};
+`;
+export const H1 = styled.h1`
+  word-wrap: anywhere;
+  color: ${bgColor};
+  font-size: 4rem;
+  ${props =>
+    props.isSmallScreen &&
+    css`
+      font-size: 2rem;
+    `};
+`;
+export const H2 = styled.h2`
+  word-wrap: anywhere;
+  color: ${bgColor};
+  font-size: 3.66rem;
+  ${props =>
+    props.isSmallScreen &&
+    css`
+      font-size: 2rem;
+    `};
 `;
 
 export const UL = styled.ul`
@@ -452,8 +431,17 @@ export const Fill = styled.div`
 `;
 
 const MapHeader = styled.h1`
+  word-wrap: anywhere;
+  word-break: break-all;
   position: absolute;
   z-index: 4;
   left: 20px;
   color: ${bgColor};
+  font-size: 3.66rem;
+
+  ${props =>
+    props.isSmallScreen &&
+    css`
+      font-size: 2rem;
+    `};
 `;

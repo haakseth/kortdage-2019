@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import styled from 'styled-components';
-import along from '@turf/along';
-import length from '@turf/length';
-import { toTapHouse, toOslo } from './api';
-import Vignette from '../../components/Vignette';
+import React, { useRef, useEffect, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import styled from "styled-components";
+import along from "@turf/along";
+import length from "@turf/length";
+import { toTapHouse, toOslo } from "./api";
+import Vignette from "../../components/Vignette";
 export default function Map() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
@@ -40,12 +40,12 @@ export default function Map() {
     }
   };
   const [geoJson, setGeoJson] = useState({
-    type: 'FeatureCollection',
+    type: "FeatureCollection",
     features: [
       {
-        type: 'Feature',
+        type: "Feature",
         geometry: {
-          type: 'LineString',
+          type: "LineString",
           coordinates: []
         }
       }
@@ -54,35 +54,35 @@ export default function Map() {
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
       mapboxgl.accessToken =
-        'pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl0cHF3MDF6ZjNlbzZtbm9maXJjeiJ9.AKnQ0IMwoETT_Tci3rDTSQ';
+        "pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl0cHF3MDF6ZjNlbzZtbm9maXJjeiJ9.AKnQ0IMwoETT_Tci3rDTSQ";
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4',
+        style: "mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4",
         // center: [12.565948, 55.670915],
         center: [11.91, 57.8],
         zoom: 5
       });
 
-      mapboxMap.on('load', () => {
+      mapboxMap.on("load", () => {
         setMap(mapboxMap);
-        mapboxMap.on('click', e => {
+        mapboxMap.on("click", e => {
           console.log(e.lngLat);
         });
         mapboxMap.addLayer({
-          id: 'line-animation',
-          type: 'line',
+          id: "line-animation",
+          type: "line",
           source: {
-            type: 'geojson',
+            type: "geojson",
             data: geoJson
           },
           layout: {
-            'line-cap': 'round',
-            'line-join': 'round'
+            "line-cap": "round",
+            "line-join": "round"
           },
           paint: {
-            'line-color': '#ed6498',
-            'line-width': 10,
-            'line-opacity': 0.8
+            "line-color": "#ed6498",
+            "line-width": 10,
+            "line-opacity": 0.8
           }
         });
       });
@@ -100,12 +100,12 @@ export default function Map() {
       animateLine();
     } else {
       setGeoJson({
-        type: 'FeatureCollection',
+        type: "FeatureCollection",
         features: [
           {
-            type: 'Feature',
+            type: "Feature",
             geometry: {
-              type: 'LineString',
+              type: "LineString",
               coordinates: []
             }
           }
@@ -117,7 +117,7 @@ export default function Map() {
   useEffect(() => {
     if (geoJson && map) {
       // console.log(geoJson.features[0].geometry.coordinates);
-      map.getSource('line-animation').setData(geoJson);
+      map.getSource("line-animation").setData(geoJson);
     }
     /*eslint-disable-next-line */
   }, [geoJson]);
@@ -150,17 +150,17 @@ export default function Map() {
   return (
     <div
       style={{
-        position: 'absolute',
+        position: "absolute",
         zIndex: 1,
         top: 0,
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: 'none'
+        overflow: "none"
       }}
       ref={el => (mapContainer.current = el)}
     >
-      <GetRoute onClick={() => getRoute(false)}>Klik</GetRoute>
+      <GetRoute onClick={() => getRoute(false)}>Kort</GetRoute>
       <GetRoute style={{ left: 80 }} onClick={() => getRoute(true)}>
         Lang
       </GetRoute>

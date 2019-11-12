@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import './mapbox-override.css';
-import produce from 'immer';
-import diffStyles from './diff';
-import Vignette from '../../components/Vignette';
+import React, { useRef, useEffect, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "./mapbox-override.css";
+import produce from "immer";
+import diffStyles from "./diff";
+import Vignette from "../../components/Vignette";
 export default function SelectFeature() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
@@ -15,40 +15,43 @@ export default function SelectFeature() {
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
       mapboxgl.accessToken =
-        'pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl0cHF3MDF6ZjNlbzZtbm9maXJjeiJ9.AKnQ0IMwoETT_Tci3rDTSQ';
+        "pk.eyJ1IjoiaGFha3NldGgiLCJhIjoiY2sycDl0cHF3MDF6ZjNlbzZtbm9maXJjeiJ9.AKnQ0IMwoETT_Tci3rDTSQ";
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/haakseth/cjpu9croe057l2sqwj25p4gje',
+        style: "mapbox://styles/haakseth/cjpu9croe057l2sqwj25p4gje",
         center: [12.57, 55.675],
-        zoom: 17,
-        maxBounds: [[12.55, 55.66], [12.58, 55.68]]
+        zoom: 16,
+        maxBounds: [
+          [12.55, 55.66],
+          [12.58, 55.68]
+        ]
       });
-      mapboxMap.on('load', () => {
+      mapboxMap.on("load", () => {
         setMap(mapboxMap);
         // Lag for selected building
         mapboxMap.addLayer(
           {
-            id: 'selected-building',
-            source: 'composite',
-            'source-layer': 'building',
-            type: 'fill',
+            id: "selected-building",
+            source: "composite",
+            "source-layer": "building",
+            type: "fill",
             paint: {
-              'fill-color': '#bba072',
-              'fill-opacity': 0.8
+              "fill-color": "#bba072",
+              "fill-opacity": 0.8
             },
-            filter: ['==', 'id', -1]
+            filter: ["==", "id", -1]
           },
-          'Building Fill'
+          "Building Fill"
         );
 
         // gemmer defaultStyle i en variabel, så vi kan reverte til den
         setDefaultStyle(mapboxMap.getStyle());
         // producerer en immutable version af defaultstyle til at starte med
         setStyle(produce(mapboxMap.getStyle(), draft => {}));
-        mapboxMap.on('click', e => {
+        mapboxMap.on("click", e => {
           const features = mapboxMap.queryRenderedFeatures(e.point);
           const buildings = features.filter(f => {
-            return f.sourceLayer === 'building';
+            return f.sourceLayer === "building";
           });
           // console.log(buildings);
           if (buildings.length) {
@@ -57,15 +60,15 @@ export default function SelectFeature() {
             setSelectedBuilding(undefined);
           }
         });
-        mapboxMap.on('mousemove', e => {
+        mapboxMap.on("mousemove", e => {
           const features = mapboxMap.queryRenderedFeatures(e.point);
           const buildings = features.filter(f => {
-            return f.sourceLayer === 'building';
+            return f.sourceLayer === "building";
           });
           if (buildings.length) {
-            mapboxMap.getCanvas().style.cursor = 'pointer';
+            mapboxMap.getCanvas().style.cursor = "pointer";
           } else {
-            mapboxMap.getCanvas().style.cursor = '';
+            mapboxMap.getCanvas().style.cursor = "";
           }
         });
       });
@@ -81,7 +84,7 @@ export default function SelectFeature() {
     if (prevStyle) {
       const changes = diffStyles(prevStyle, style);
       changes.forEach(change => {
-        if (change.command === 'updateSource') {
+        if (change.command === "updateSource") {
           // This is a workaround patch for updateSource not being
           // low level enough for a generic apply command - dff.js has also
           // been patched.
@@ -100,8 +103,8 @@ export default function SelectFeature() {
         selectedBuilding
           ? produce(style, newStyle => {
               newStyle.layers.forEach(l => {
-                if (l.id === 'Building Fill') {
-                  l.paint['fill-opacity'] = 0.3;
+                if (l.id === "Building Fill") {
+                  l.paint["fill-opacity"] = 0.3;
                 }
               });
             })
@@ -109,26 +112,26 @@ export default function SelectFeature() {
       );
       const filter = selectedBuilding
         ? [
-            'all',
+            "all",
             ...Object.keys(selectedBuilding.properties).map(p => {
-              return ['==', p, selectedBuilding.properties[p]];
+              return ["==", p, selectedBuilding.properties[p]];
             })
           ]
-        : ['==', 'id', -1];
-      map.setFilter('selected-building', filter);
+        : ["==", "id", -1];
+      map.setFilter("selected-building", filter);
     }
     /* eslint-disable-next-line */
   }, [selectedBuilding]);
   return (
     <div
       style={{
-        position: 'absolute',
+        position: "absolute",
         zIndex: 1,
         top: 0,
         bottom: 0,
         left: 0,
         right: 0,
-        overflow: 'none'
+        overflow: "none"
       }}
       ref={el => (mapContainer.current = el)}
     >
