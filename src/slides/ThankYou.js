@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useMedia } from "../hooks/useMedia";
 import { size, bgColor } from "../style";
-import { ListWrapper, UL, Fill } from "../presentation";
+import { ListWrapper, UL, H1 } from "../presentation";
 export default function ThankYou() {
   const isSmallScreen = useMedia(
     [`(max-width: ${size.small}px)`],
@@ -10,20 +10,12 @@ export default function ThankYou() {
     false
   );
   return (
-    <Fill
-      column
-      style={{
-        color: bgColor,
-        justifyContent: "space-between",
-        padding: "1em"
-      }}
-    >
-      {/* eslint-disable-next-line */}
-      <h1>Tak!</h1>
+    <div style={{ color: bgColor }}>
+      <H1 isSmallScreen={isSmallScreen}>Tak!</H1>
       <div
         style={{
           display: "flex",
-          flexDirection: isSmallScreen ? "column" : "row",
+          flexWrap: "wrap",
           justifyContent: "space-evenly",
           width: "100vw",
           padding: 20
@@ -57,6 +49,11 @@ export default function ThankYou() {
                 Alex Siale - Unsplash
               </A>
             </li>
+            <li>
+              <A href="https://unsplash.com/photos/dQf7RZhMOJU">
+                Fleur - Unsplash
+              </A>
+            </li>
           </UL>
         </ListWrapper>
         <ListWrapper>
@@ -87,10 +84,18 @@ export default function ThankYou() {
         <ListWrapper>
           <h2>Eksempler</h2>
           <UL>
-            <li>Onboarding | kode</li>
-            <li>mapboxgl.setStyle() | kode</li>
-            <li>Animére rute | kode</li>
-            <li>Interaktion/Gader | kode</li>
+            {/* <li>Onboarding | kode</li>
+            <li>mapboxgl.setStyle() | kode</li> */}
+            <li>
+              <A href="https://haakseth.github.io/animate-route/">
+                Animére rute
+              </A>{" "}
+              | <A href="https://github.com/haakseth/animate-route">kode</A>
+            </li>
+            <li>
+              <A href="https://haakseth.github.io/streets">Interaktion/Gader</A>
+              | <A href="https://github.com/haakseth/streets">kode</A>
+            </li>
           </UL>
         </ListWrapper>
         <ListWrapper>
@@ -113,7 +118,7 @@ export default function ThankYou() {
           </UL>
         </ListWrapper>
       </div>
-    </Fill>
+    </div>
   );
 }
 const A = styled.a`

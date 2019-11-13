@@ -6,6 +6,7 @@ import along from "@turf/along";
 import length from "@turf/length";
 import { toTapHouse, toOslo } from "./api";
 import Vignette from "../../components/Vignette";
+
 export default function Map() {
   const mapContainer = useRef();
   const [map, setMap] = useState(undefined);
@@ -58,7 +59,6 @@ export default function Map() {
       const mapboxMap = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/haakseth/cjqwfdluz04nt2rnu04yd2ik4",
-        // center: [12.565948, 55.670915],
         center: [11.91, 57.8],
         zoom: 5.7
       });
@@ -93,10 +93,6 @@ export default function Map() {
 
   useEffect(() => {
     if (route) {
-      // map.fitBounds(route.features[0].bbox, {
-      //   padding: 200
-      //   // speed: 10
-      // });
       animateLine();
     } else {
       setGeoJson({
@@ -116,12 +112,10 @@ export default function Map() {
   }, [route]);
   useEffect(() => {
     if (geoJson && map) {
-      // console.log(geoJson.features[0].geometry.coordinates);
       map.getSource("line-animation").setData(geoJson);
     }
     /*eslint-disable-next-line */
   }, [geoJson]);
-  // const [animation, setAnimation] = useState(undefined);
   let progress = 0;
   const animateLine = () => {
     const antalpunkter = route.features[0].geometry.coordinates.length;

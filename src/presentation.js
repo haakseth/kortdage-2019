@@ -326,6 +326,27 @@ export default function Presentation() {
           <li>Deler linjen ind i koordinater med lig afstand mellem sig</li>
           <li>Antal koordinater per frame, avh af linjens længde</li>
         </List> */}
+
+        <SlideText
+          isSmallScreen={isSmallScreen}
+          style={{
+            position: "absolute",
+            zIndex: 4,
+            bottom: 10,
+            left: 20,
+            listStyle: "none"
+            // pointerEvents: "none"
+          }}
+        >
+          <a
+            style={{ color: "#fff" }}
+            href="https://haakseth.github.io/animate-route/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            haakseth.github.io/animate-route/
+          </a>
+        </SlideText>
         <AnimatedRoute2 />
         <SeptimaLogo color={bgColor} />
       </Slide>
@@ -356,6 +377,26 @@ export default function Presentation() {
           Interaktioner i kort
         </MapHeader>
         <Streets />
+        <SlideText
+          isSmallScreen={isSmallScreen}
+          style={{
+            position: "absolute",
+            zIndex: 4,
+            bottom: 10,
+            left: 20,
+            listStyle: "none"
+            // pointerEvents: "none"
+          }}
+        >
+          <a
+            style={{ color: "#fff" }}
+            href="https://haakseth.github.io/streets/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            haakseth.github.io/streets/
+          </a>
+        </SlideText>
         <SeptimaLogo color={"#fff"} />
         <VignetteTopLeft />
       </Slide>
