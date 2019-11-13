@@ -16,6 +16,7 @@ import dictionary from "./img/waldemar-brandt-U3Ptj3jafX8-unsplash.jpg";
 import motivation from "./img/andrew-neel-1-29wyvvLJA-unsplash.jpg";
 import motion from "./img/ahmad-odeh-ckm1yAe6jhU-unsplash.jpg";
 import mountainRidge from "./img/alex-siale-qH36EgNjPJY-unsplash.jpg";
+import fleur from "./img/fleur-dQf7RZhMOJU-unsplash.jpg";
 import shaka1 from "./img/shaka1.jpg";
 import shaka2 from "./img/shaka2.jpg";
 import State from "./examples/State/State";
@@ -236,6 +237,19 @@ export default function Presentation() {
         <Vignette />
         <SeptimaLogo />
       </Slide>
+      <Slide
+        align={"center flex-start"}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+            url(${fleur})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <H2 isSmallScreen={isSmallScreen}>Kortanimationer</H2>
+        <SlideText isSmallScreen={isSmallScreen}>WebGL/Canvas</SlideText>
+      </Slide>
       <Slide align={"center flex-start"}>
         <MapHeader isSmallScreen={isSmallScreen}>Kortanimationer</MapHeader>
         {/* Kortbiblioteker er baseret på canvas eller web gl, så ingen css. De
@@ -298,7 +312,7 @@ export default function Presentation() {
         <SeptimaLogo color={bgColor} />
       </Slide>
       <Slide align={"center flex-start"}>
-        <List
+        {/* <List
           isSmallScreen={isSmallScreen}
           style={{
             position: "absolute",
@@ -311,7 +325,7 @@ export default function Presentation() {
         >
           <li>Deler linjen ind i koordinater med lig afstand mellem sig</li>
           <li>Antal koordinater per frame, avh af linjens længde</li>
-        </List>
+        </List> */}
         <AnimatedRoute2 />
         <SeptimaLogo color={bgColor} />
       </Slide>
