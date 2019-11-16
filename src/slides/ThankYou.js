@@ -17,7 +17,6 @@ export default function ThankYou() {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-evenly",
-          width: "100vw",
           padding: 20
         }}
       >
