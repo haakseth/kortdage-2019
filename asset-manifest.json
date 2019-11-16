@@ -1,7 +1,7 @@
 {
   "main.css": "/kortdage-2019/static/css/main.acd3911f.chunk.css",
-  "main.js": "/kortdage-2019/static/js/main.617fa2b6.chunk.js",
-  "main.js.map": "/kortdage-2019/static/js/main.617fa2b6.chunk.js.map",
+  "main.js": "/kortdage-2019/static/js/main.2d1e600c.chunk.js",
+  "main.js.map": "/kortdage-2019/static/js/main.2d1e600c.chunk.js.map",
   "static/css/1.c1cf2493.chunk.css": "/kortdage-2019/static/css/1.c1cf2493.chunk.css",
   "static/js/1.ebf00135.chunk.js": "/kortdage-2019/static/js/1.ebf00135.chunk.js",
   "static/js/1.ebf00135.chunk.js.map": "/kortdage-2019/static/js/1.ebf00135.chunk.js.map",
@@ -18,6 +18,6 @@
   "static/css/main.acd3911f.chunk.css.map": "/kortdage-2019/static/css/main.acd3911f.chunk.css.map",
   "static/css/1.c1cf2493.chunk.css.map": "/kortdage-2019/static/css/1.c1cf2493.chunk.css.map",
   "index.html": "/kortdage-2019/index.html",
-  "precache-manifest.bfdcfae067fc36384008c5b9d78cf1b3.js": "/kortdage-2019/precache-manifest.bfdcfae067fc36384008c5b9d78cf1b3.js",
+  "precache-manifest.01782b0fca5ee4612807dc9654201d87.js": "/kortdage-2019/precache-manifest.01782b0fca5ee4612807dc9654201d87.js",
   "service-worker.js": "/kortdage-2019/service-worker.js"
 }

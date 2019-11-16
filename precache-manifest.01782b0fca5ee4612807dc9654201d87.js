@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/kortdage-2019/static/media/andrew-neel-1-29wyvvLJA-unsplash.05342aca.jpg"
   },
   {
-    "revision": "617fa2b693253c0d2ca7",
+    "revision": "2d1e600cb6c5b53dda54",
     "url": "/kortdage-2019/static/css/main.acd3911f.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/kortdage-2019/static/media/thomas-kelley-5YtjgRNTli4-unsplash.61529a5f.jpg"
   },
   {
-    "revision": "617fa2b693253c0d2ca7",
-    "url": "/kortdage-2019/static/js/main.617fa2b6.chunk.js"
+    "revision": "2d1e600cb6c5b53dda54",
+    "url": "/kortdage-2019/static/js/main.2d1e600c.chunk.js"
   },
   {
     "revision": "a09933ae9bca3b3afbe4363f14203a41",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/kortdage-2019/static/css/1.c1cf2493.chunk.css"
   },
   {
-    "revision": "81b782f7b4254edf7dd3da8534b01129",
+    "revision": "cc19d417ecd531a6556997e7880971a0",
     "url": "/kortdage-2019/index.html"
   }
 ];
